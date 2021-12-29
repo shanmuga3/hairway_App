@@ -1,0 +1,6 @@
+com/gofreshapartner/app/MainActivity.java
+ com.gofreshapartner.app.MainActivity
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/gofreshapartner/app/BuildConfig.java
+ com.gofreshapartner.app.BuildConfig
