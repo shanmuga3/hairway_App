@@ -16,8 +16,7 @@ class SignInScreen extends BaseRoute {
   final int screenId;
   SignInScreen({a, o, this.screenId}) : super(a: a, o: o, r: 'SignInScreen');
   @override
-  _SignInScreenState createState() =>
-      new _SignInScreenState(screenId: screenId);
+  _SignInScreenState createState() => new _SignInScreenState(screenId: screenId);
 }
 
 class _SignInScreenState extends BaseRouteState {
@@ -41,10 +40,10 @@ class _SignInScreenState extends BaseRouteState {
         screenId == 1
             ? exitAppDialog()
             : Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ChooseSignUpSignInScreen(
-                      a: widget.analytics,
-                      o: widget.observer,
-                    )));
+            builder: (context) => ChooseSignUpSignInScreen(
+              a: widget.analytics,
+              o: widget.observer,
+            )));
         return null;
       },
       child: sc(
@@ -71,21 +70,18 @@ class _SignInScreenState extends BaseRouteState {
                         ),
                       ),
                       Padding(
-                        padding: Platform.isAndroid
-                            ? EdgeInsets.only(bottom: 15, left: 10, top: 10)
-                            : EdgeInsets.only(bottom: 15, left: 10, top: 20),
+                        padding: Platform.isAndroid ? EdgeInsets.only(bottom: 15, left: 10, top: 10) : EdgeInsets.only(bottom: 15, left: 10, top: 20),
                         child: GestureDetector(
                           onTap: () {
                             screenId == 1
                                 ? exitAppDialog()
                                 : Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            ChooseSignUpSignInScreen(
-                                              a: widget.analytics,
-                                              o: widget.observer,
-                                            )),
-                                  );
+                              MaterialPageRoute(
+                                  builder: (context) => ChooseSignUpSignInScreen(
+                                    a: widget.analytics,
+                                    o: widget.observer,
+                                  )),
+                            );
                           },
                           child: Row(
                             children: [
@@ -95,8 +91,7 @@ class _SignInScreenState extends BaseRouteState {
                               ),
                               Text(
                                 AppLocalizations.of(context).lbl_back,
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 17.5),
+                                style: TextStyle(color: Colors.black, fontSize: 17.5),
                               ),
                             ],
                           ),
@@ -108,9 +103,7 @@ class _SignInScreenState extends BaseRouteState {
                 Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20)),
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
                     ),
                     margin: EdgeInsets.only(top: 80),
                     height: MediaQuery.of(context).size.height,
@@ -124,9 +117,7 @@ class _SignInScreenState extends BaseRouteState {
                               margin: EdgeInsets.only(top: 30, bottom: 10),
                               child: Text(
                                 AppLocalizations.of(context).lblSignIn,
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .headline3,
+                                style: Theme.of(context).primaryTextTheme.headline3,
                               )),
                           Container(
                             margin: EdgeInsets.only(top: 15),
@@ -136,25 +127,20 @@ class _SignInScreenState extends BaseRouteState {
                               children: [
                                 Text(
                                   AppLocalizations.of(context).lblEmail,
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .subtitle2,
+                                  style: Theme.of(context).primaryTextTheme.subtitle2,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
                                   child: TextFormField(
                                     onEditingComplete: () {
-                                      FocusScope.of(context)
-                                          .requestFocus(_fPassword);
+                                      FocusScope.of(context).requestFocus(_fPassword);
                                     },
                                     controller: _cEmail,
                                     onChanged: (val) {
-                                      _isValidate =
-                                          EmailValidator.validate(val);
+                                      _isValidate = EmailValidator.validate(val);
                                     },
                                     decoration: InputDecoration(
-                                      hintText: AppLocalizations.of(context)
-                                          .hnt_email,
+                                      hintText: AppLocalizations.of(context).hnt_email,
                                       prefixIcon: Icon(Icons.mail),
                                       contentPadding: EdgeInsets.only(top: 5),
                                     ),
@@ -164,9 +150,7 @@ class _SignInScreenState extends BaseRouteState {
                                   margin: EdgeInsets.only(top: 5),
                                   child: Text(
                                     AppLocalizations.of(context).lblPassword,
-                                    style: Theme.of(context)
-                                        .primaryTextTheme
-                                        .subtitle2,
+                                    style: Theme.of(context).primaryTextTheme.subtitle2,
                                   ),
                                 ),
                                 Padding(
@@ -180,9 +164,7 @@ class _SignInScreenState extends BaseRouteState {
                                       hintText: '******',
                                       prefixIcon: Icon(Icons.lock),
                                       suffixIcon: IconButton(
-                                        icon: Icon(_showPassword
-                                            ? Icons.visibility_off
-                                            : Icons.visibility),
+                                        icon: Icon(_showPassword ? Icons.visibility_off : Icons.visibility),
                                         onPressed: () {
                                           _showPassword = !_showPassword;
                                           setState(() {});
@@ -211,30 +193,24 @@ class _SignInScreenState extends BaseRouteState {
                                             _isRemember = val;
                                             setState(() {});
                                             if (!_isRemember) {
-                                              global.sp
-                                                  .remove('isRememberMeEmail');
+                                              global.sp.remove('isRememberMeEmail');
                                             }
+
                                           }),
                                     ),
                                     Container(
-                                        margin: global.isRTL
-                                            ? EdgeInsets.only(right: 7)
-                                            : EdgeInsets.only(left: 7),
+                                        margin: global.isRTL ? EdgeInsets.only(right: 7) : EdgeInsets.only(left: 7),
                                         child: GestureDetector(
                                           onTap: () {
                                             _isRemember = !_isRemember;
                                             setState(() {});
                                             if (!_isRemember) {
-                                              global.sp
-                                                  .remove('isRememberMeEmail');
+                                              global.sp.remove('isRememberMeEmail');
                                             }
                                           },
                                           child: Text(
-                                            AppLocalizations.of(context)
-                                                .lblRememberMe,
-                                            style: Theme.of(context)
-                                                .primaryTextTheme
-                                                .subtitle2,
+                                            AppLocalizations.of(context).lblRememberMe,
+                                            style: Theme.of(context).primaryTextTheme.subtitle2,
                                           ),
                                         )),
                                   ],
@@ -244,11 +220,8 @@ class _SignInScreenState extends BaseRouteState {
                                     _forgotPassword();
                                   },
                                   child: Text(
-                                    AppLocalizations.of(context)
-                                        .lblForgotPassword,
-                                    style: Theme.of(context)
-                                        .primaryTextTheme
-                                        .headline1,
+                                    AppLocalizations.of(context).lblForgotPassword,
+                                    style: Theme.of(context).primaryTextTheme.headline1,
                                   ),
                                 )
                               ],
@@ -275,26 +248,20 @@ class _SignInScreenState extends BaseRouteState {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  AppLocalizations.of(context)
-                                      .txt_if_you_have_no_account,
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .subtitle2,
+                                  AppLocalizations.of(context).txt_if_you_have_no_account,
+                                  style: Theme.of(context).primaryTextTheme.subtitle2,
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.of(context)
-                                        .push(MaterialPageRoute(
-                                            builder: (context) => SignUpScreen(
-                                                  a: widget.analytics,
-                                                  o: widget.observer,
-                                                )));
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (context) => SignUpScreen(
+                                          a: widget.analytics,
+                                          o: widget.observer,
+                                        )));
                                   },
                                   child: Text(
                                     AppLocalizations.of(context).btnSignUp,
-                                    style: Theme.of(context)
-                                        .primaryTextTheme
-                                        .headline1,
+                                    style: Theme.of(context).primaryTextTheme.headline1,
                                   ),
                                 )
                               ],
@@ -329,88 +296,77 @@ class _SignInScreenState extends BaseRouteState {
       await showDialog(
           context: context,
           builder: (context) => AlertDialog(
-                title: Text(
-                  AppLocalizations.of(context).lbl_forgot_password,
-                  textAlign: TextAlign.center,
-                ),
-                titleTextStyle: Theme.of(context).primaryTextTheme.headline3,
-                content: Container(
-                  height: 200,
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 5),
-                        child: Text(
-                          AppLocalizations.of(context).lblEmail,
-                          style: Theme.of(context).primaryTextTheme.subtitle2,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5),
-                        child: TextFormField(
-                          controller: _cForgotEmail,
-                          decoration: InputDecoration(
-                            hintText: AppLocalizations.of(context).hnt_email,
-                            prefixIcon: Icon(Icons.mail),
-                            contentPadding: EdgeInsets.only(top: 5, left: 10),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 17),
-                        height: 50,
-                        width: MediaQuery.of(context).size.width,
-                        child: TextButton(
-                          onPressed: () async {
-                            _isValidateEmail = EmailValidator.validate(
-                                _cForgotEmail.text.trim());
-                            if (_isValidateEmail &&
-                                _cForgotEmail.text.isNotEmpty) {
-                              bool isConnected = await br.checkConnectivity();
-                              if (isConnected) {
-                                showOnlyLoaderDialog();
-                                await apiHelper
-                                    .forGotPassword(_cForgotEmail.text.trim())
-                                    .then((result) {
-                                  if (result.status == "1") {
-                                    hideLoader();
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                VerifyOtpScreen(
-                                                  _cForgotEmail.text.trim(),
-                                                  a: widget.analytics,
-                                                  o: widget.observer,
-                                                )));
-                                  } else {
-                                    hideLoader();
-                                    Navigator.of(context).pop();
-                                    showSnackBar(
-                                        key: _scaffoldKey,
-                                        snackBarMessage: '${result.message}');
-                                  }
-                                });
-                              } else {
-                                showNetworkErrorSnackBar(_scaffoldKey);
-                              }
-                            } else {
-                              showSnackBar(
-                                  key: _scaffoldKey,
-                                  snackBarMessage: AppLocalizations.of(context)
-                                      .txt_please_enter_valid_email);
-                            }
-                          },
-                          child: Text(
-                            AppLocalizations.of(context).btn_send_code,
-                          ),
-                        ),
-                      ),
-                    ],
+            title: Text(
+              AppLocalizations.of(context).lbl_forgot_password,
+              textAlign: TextAlign.center,
+            ),
+            titleTextStyle: Theme.of(context).primaryTextTheme.headline3,
+            content: Container(
+              height: 200,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 5),
+                    child: Text(
+                      AppLocalizations.of(context).lblEmail,
+                      style: Theme.of(context).primaryTextTheme.subtitle2,
+                    ),
                   ),
-                ),
-              )).then((paymentMode2) {});
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: TextFormField(
+                      controller: _cForgotEmail,
+                      decoration: InputDecoration(
+                        hintText: AppLocalizations.of(context).hnt_email,
+                        prefixIcon: Icon(Icons.mail),
+                        contentPadding: EdgeInsets.only(top: 5, left: 10),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 17),
+                    height: 50,
+                    width: MediaQuery.of(context).size.width,
+                    child: TextButton(
+                      onPressed: () async {
+                        _isValidateEmail = EmailValidator.validate(_cForgotEmail.text.trim());
+                        if (_isValidateEmail && _cForgotEmail.text.isNotEmpty) {
+                          bool isConnected = await br.checkConnectivity();
+                          if (isConnected) {
+                            showOnlyLoaderDialog();
+                            await apiHelper.forGotPassword(_cForgotEmail.text.trim()).then((result) {
+                              if (result.status == "1") {
+                                hideLoader();
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => VerifyOtpScreen(
+                                      _cForgotEmail.text.trim(),
+                                      a: widget.analytics,
+                                      o: widget.observer,
+                                    )));
+                              } else {
+                                hideLoader();
+                                Navigator.of(context).pop();
+                                showSnackBar(key: _scaffoldKey, snackBarMessage: '${result.message}');
+                              }
+                            });
+                          } else {
+                            showNetworkErrorSnackBar(_scaffoldKey);
+                          }
+                        } else {
+                          showSnackBar(key: _scaffoldKey, snackBarMessage: AppLocalizations.of(context).txt_please_enter_valid_email);
+                        }
+                      },
+                      child: Text(
+                        AppLocalizations.of(context).btn_send_code,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )).then((paymentMode2) {});
     } catch (e) {
       print('Exception: signInScreen: _forgotPassword(): ${e.toString()}');
     }
@@ -420,13 +376,12 @@ class _SignInScreenState extends BaseRouteState {
     try {
       FocusScope.of(context).unfocus();
       user.vendor_email = _cEmail.text.trim();
+
       user.vendor_password = _cPassword.text.trim();
+
       user.device_id = global.appDeviceId;
 
-      if (_cEmail.text.isNotEmpty &&
-          _cPassword.text.isNotEmpty &&
-          _cPassword.text.trim().length >= 2 &&
-          _isValidate) {
+      if (_cEmail.text.isNotEmpty && _cPassword.text.isNotEmpty && _cPassword.text.trim().length >= 2 && _isValidate) {
         bool isConnected = await br.checkConnectivity();
         if (isConnected) {
           showOnlyLoaderDialog();
@@ -436,22 +391,20 @@ class _SignInScreenState extends BaseRouteState {
                 global.user = result.recordList;
                 br.saveUser(global.user);
                 if (_isRemember) {
-                  await global.sp
-                      .setString('isRememberMeEmail', _cEmail.text.trim());
+                  await global.sp.setString('isRememberMeEmail', _cEmail.text.trim());
                 }
                 hideLoader();
 
                 Navigator.of(context).push(
                   MaterialPageRoute(
                       builder: (context) => BottomNavigationWidget(
-                            a: widget.analytics,
-                            o: widget.observer,
-                          )),
+                        a: widget.analytics,
+                        o: widget.observer,
+                      )),
                 );
               } else {
                 hideLoader();
-                showSnackBar(
-                    key: _scaffoldKey, snackBarMessage: '${result.message}');
+                showSnackBar(key: _scaffoldKey, snackBarMessage: '${result.message}');
               }
             }
           });
@@ -459,19 +412,15 @@ class _SignInScreenState extends BaseRouteState {
           showNetworkErrorSnackBar(_scaffoldKey);
         }
       } else if (_cEmail.text.isEmpty) {
-        showSnackBar(
-            key: _scaffoldKey, snackBarMessage: 'Please enter valid Email Id');
+        showSnackBar(key: _scaffoldKey, snackBarMessage: 'Please enter valid Email Id');
       } else if (_cPassword.text.isEmpty || _cPassword.text.trim().length < 2) {
-        showSnackBar(
-            key: _scaffoldKey,
-            snackBarMessage: 'Password should be of minimun 2 characters');
+        showSnackBar(key: _scaffoldKey, snackBarMessage: 'Password should be of minimun 2 characters');
       } else if (_cEmail.text.isEmpty || !_isValidate) {
-        showSnackBar(
-            key: _scaffoldKey, snackBarMessage: 'Please enter valid email');
+        showSnackBar(key: _scaffoldKey, snackBarMessage: 'Please enter valid email');
       }
+
     } catch (e) {
-      print(
-          "Exception - signInScreen.dart - _loginWithEmail():" + e.toString());
+      print("Exception - signInScreen.dart - _loginWithEmail():" + e.toString());
     }
   }
 }

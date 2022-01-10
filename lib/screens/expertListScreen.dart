@@ -33,12 +33,12 @@ class _ExpertListScreenState extends BaseRouteState {
         onWillPop: () {
           screenId == 1
               ? Navigator.of(context).push(
-                  MaterialPageRoute(
-                      builder: (context) => BottomNavigationWidget(
-                            a: widget.analytics,
-                            o: widget.observer,
-                          )),
-                )
+            MaterialPageRoute(
+                builder: (context) => BottomNavigationWidget(
+                  a: widget.analytics,
+                  o: widget.observer,
+                )),
+          )
               : Navigator.of(context).pop();
           return null;
         },
@@ -69,12 +69,12 @@ class _ExpertListScreenState extends BaseRouteState {
                         onTap: () {
                           screenId == 1
                               ? Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                      builder: (context) => BottomNavigationWidget(
-                                            a: widget.analytics,
-                                            o: widget.observer,
-                                          )),
-                                )
+                            MaterialPageRoute(
+                                builder: (context) => BottomNavigationWidget(
+                                  a: widget.analytics,
+                                  o: widget.observer,
+                                )),
+                          )
                               : Navigator.of(context).pop();
                         },
                         child: Row(
@@ -115,131 +115,131 @@ class _ExpertListScreenState extends BaseRouteState {
                             )),
                         _isDataLoaded
                             ? _expertList.length > 0
-                                ? Expanded(
-                                    child: ListView.builder(
-                                        itemCount: _expertList.length,
-                                        shrinkWrap: true,
-                                        itemBuilder: (BuildContext context, int index) {
-                                          return Container(
-                                            height: 95,
-                                            padding: const EdgeInsets.only(bottom: 8),
-                                            child: Card(
-                                                child: Row(
-                                              children: [
-                                                Container(
-                                                  margin: global.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
-                                                  child: CircleAvatar(
-                                                    child: _expertList[index].staff_image == 'N/A'
-                                                        ? Image.asset(
-                                                            'assets/sample_image.jpg',
-                                                            fit: BoxFit.cover,
-                                                          )
-                                                        : CachedNetworkImage(
-                                                            imageUrl: global.baseUrlForImage + _expertList[index].staff_image,
-                                                            imageBuilder: (context, imageProvider) => CircleAvatar(
-                                                              radius: 30,
-                                                              backgroundImage: imageProvider,
-                                                            ),
-                                                            placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-                                                            errorWidget: (context, url, error) => Icon(Icons.error),
-                                                          ),
-                                                    radius: 30,
-                                                  ),
+                            ? Expanded(
+                          child: ListView.builder(
+                              itemCount: _expertList.length,
+                              shrinkWrap: true,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Container(
+                                  height: 95,
+                                  padding: const EdgeInsets.only(bottom: 8),
+                                  child: Card(
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            margin: global.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                            child: CircleAvatar(
+                                              child: _expertList[index].staff_image == 'N/A'
+                                                  ? Image.asset(
+                                                'assets/sample_image.jpg',
+                                                fit: BoxFit.cover,
+                                              )
+                                                  : CachedNetworkImage(
+                                                imageUrl: global.baseUrlForImage + _expertList[index].staff_image,
+                                                imageBuilder: (context, imageProvider) => CircleAvatar(
+                                                  radius: 30,
+                                                  backgroundImage: imageProvider,
                                                 ),
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding: global.isRTL ? EdgeInsets.only(right: 15.0, top: 10) : EdgeInsets.only(left: 15.0, top: 10),
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        Container(
-                                                          child: Text(
-                                                            '${_expertList[index].staff_name}',
-                                                            style: Theme.of(context).primaryTextTheme.subtitle2,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding: const EdgeInsets.only(top: 2),
-                                                          child: Text(
-                                                            '${_expertList[index].staff_description}',
-                                                            style: Theme.of(context).primaryTextTheme.subtitle1,
-                                                            overflow: TextOverflow.ellipsis,
-                                                            maxLines: 2,
-                                                          ),
-                                                        ),
-                                                      ],
+                                                placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                                                errorWidget: (context, url, error) => Icon(Icons.error),
+                                              ),
+                                              radius: 30,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: global.isRTL ? EdgeInsets.only(right: 15.0, top: 10) : EdgeInsets.only(left: 15.0, top: 10),
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                    child: Text(
+                                                      '${_expertList[index].staff_name}',
+                                                      style: Theme.of(context).primaryTextTheme.subtitle2,
                                                     ),
                                                   ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 2),
+                                                    child: Text(
+                                                      '${_expertList[index].staff_description}',
+                                                      style: Theme.of(context).primaryTextTheme.subtitle1,
+                                                      overflow: TextOverflow.ellipsis,
+                                                      maxLines: 2,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          PopupMenuButton(itemBuilder: (BuildContext context) {
+                                            return [
+                                              PopupMenuItem(
+                                                padding: EdgeInsets.all(0),
+                                                child: new ListTile(
+                                                  leading: Icon(
+                                                    Icons.edit,
+                                                    color: Theme.of(context).primaryColor,
+                                                  ),
+                                                  title: Text(
+                                                    AppLocalizations.of(context).lbl_edit,
+                                                    style: Theme.of(context).primaryTextTheme.subtitle2,
+                                                  ),
+                                                  onTap: () {
+                                                    Navigator.of(context).pop();
+                                                    Navigator.of(context).push(MaterialPageRoute(
+                                                        builder: (context) => AddExpertScreen(
+                                                          a: widget.analytics,
+                                                          o: widget.observer,
+                                                          experts: _expertList[index],
+                                                        )));
+                                                  },
                                                 ),
-                                                PopupMenuButton(itemBuilder: (BuildContext context) {
-                                                  return [
-                                                    PopupMenuItem(
-                                                      padding: EdgeInsets.all(0),
-                                                      child: new ListTile(
-                                                        leading: Icon(
-                                                          Icons.edit,
-                                                          color: Theme.of(context).primaryColor,
-                                                        ),
-                                                        title: Text(
-                                                          AppLocalizations.of(context).lbl_edit,
-                                                          style: Theme.of(context).primaryTextTheme.subtitle2,
-                                                        ),
-                                                        onTap: () {
-                                                          Navigator.of(context).pop();
-                                                          Navigator.of(context).push(MaterialPageRoute(
-                                                              builder: (context) => AddExpertScreen(
-                                                                    a: widget.analytics,
-                                                                    o: widget.observer,
-                                                                    experts: _expertList[index],
-                                                                  )));
-                                                        },
-                                                      ),
+                                              ),
+                                              PopupMenuItem(
+                                                padding: EdgeInsets.all(0),
+                                                child: new ListTile(
+                                                  leading: Icon(Icons.delete, color: Theme.of(context).primaryColor),
+                                                  title: Text(AppLocalizations.of(context).lbl_delete, style: Theme.of(context).primaryTextTheme.subtitle2),
+                                                  onTap: () {
+                                                    Navigator.of(context).pop();
+                                                    _deleteExpertConfirmationDialog(_expertList[index].staff_id, index);
+                                                  },
+                                                ),
+                                              ),
+                                              if (_expertList[index].review != null)
+                                                PopupMenuItem(
+                                                  padding: EdgeInsets.all(0),
+                                                  child: _expertList[index].review != null
+                                                      ? ListTile(
+                                                    leading: Icon(
+                                                      Icons.visibility,
+                                                      color: Theme.of(context).primaryColor,
                                                     ),
-                                                    PopupMenuItem(
-                                                      padding: EdgeInsets.all(0),
-                                                      child: new ListTile(
-                                                        leading: Icon(Icons.delete, color: Theme.of(context).primaryColor),
-                                                        title: Text(AppLocalizations.of(context).lbl_delete, style: Theme.of(context).primaryTextTheme.subtitle2),
-                                                        onTap: () {
-                                                          Navigator.of(context).pop();
-                                                          _deleteExpertConfirmationDialog(_expertList[index].staff_id, index);
-                                                        },
-                                                      ),
+                                                    title: Text(
+                                                      AppLocalizations.of(context).lbl_reviews,
+                                                      style: Theme.of(context).primaryTextTheme.subtitle2,
                                                     ),
-                                                    if (_expertList[index].review != null)
-                                                      PopupMenuItem(
-                                                        padding: EdgeInsets.all(0),
-                                                        child: _expertList[index].review != null
-                                                            ? ListTile(
-                                                                leading: Icon(
-                                                                  Icons.visibility,
-                                                                  color: Theme.of(context).primaryColor,
-                                                                ),
-                                                                title: Text(
-                                                                  AppLocalizations.of(context).lbl_reviews,
-                                                                  style: Theme.of(context).primaryTextTheme.subtitle2,
-                                                                ),
-                                                                onTap: () {
-                                                                  Navigator.of(context).pop();
-                                                                  Navigator.of(context).push(MaterialPageRoute(
-                                                                      builder: (context) => ReviewScreen(
-                                                                            _expertList[index].review,
-                                                                            true,
-                                                                            a: widget.analytics,
-                                                                            o: widget.observer,
-                                                                          )));
-                                                                },
-                                                              )
-                                                            : SizedBox(height: 0),
-                                                      ),
-                                                  ];
-                                                })
-                                              ],
-                                            )),
-                                          );
-                                        }),
-                                  )
-                                : Container(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 3), child: Text(AppLocalizations.of(context).txt_expert_will_shown_here))
+                                                    onTap: () {
+                                                      Navigator.of(context).pop();
+                                                      Navigator.of(context).push(MaterialPageRoute(
+                                                          builder: (context) => ReviewScreen(
+                                                            _expertList[index].review,
+                                                            true,
+                                                            a: widget.analytics,
+                                                            o: widget.observer,
+                                                          )));
+                                                    },
+                                                  )
+                                                      : SizedBox(height: 0),
+                                                ),
+                                            ];
+                                          })
+                                        ],
+                                      )),
+                                );
+                              }),
+                        )
+                            : Container(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 3), child: Text(AppLocalizations.of(context).txt_expert_will_shown_here))
                             : Expanded(child: _shimmer())
                       ],
                     ),
@@ -248,23 +248,23 @@ class _ExpertListScreenState extends BaseRouteState {
           ),
           bottomNavigationBar: _isDataLoaded
               ? Container(
-                  margin: EdgeInsets.only(top: 15, bottom: 15, left: 10, right: 10),
-                  width: MediaQuery.of(context).size.width,
-                  height: 50,
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AddExpertScreen(
-                                a: widget.analytics,
-                                o: widget.observer,
-                              )));
-                    },
-                    child: Text(
-                      AppLocalizations.of(context).btn_add_new_expert,
-                    ),
-                  ),
-                  decoration: BoxDecoration(color: Theme.of(context).primaryColor, borderRadius: BorderRadius.all(Radius.circular(10))),
-                )
+            margin: EdgeInsets.only(top: 15, bottom: 15, left: 10, right: 10),
+            width: MediaQuery.of(context).size.width,
+            height: 50,
+            child: TextButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => AddExpertScreen(
+                      a: widget.analytics,
+                      o: widget.observer,
+                    )));
+              },
+              child: Text(
+                AppLocalizations.of(context).btn_add_new_expert,
+              ),
+            ),
+            decoration: BoxDecoration(color: Theme.of(context).primaryColor, borderRadius: BorderRadius.all(Radius.circular(10))),
+          )
               : _shimmer1(),
         ),
       ),

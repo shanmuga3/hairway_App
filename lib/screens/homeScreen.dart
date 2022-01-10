@@ -54,25 +54,33 @@ class _HomeScreenState extends BaseRouteState {
       appBar: AppBar(
         title: Text(
           'DashBoard',
-          style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(top:15.0),
+            padding: const EdgeInsets.only(top: 15.0),
             child: Column(
               children: [
-                Text('Switch ',style: TextStyle(fontSize: 10,color: Colors.black),),
-                Text(' On/OFF',style: TextStyle(fontSize: 10,color: Colors.black),),
+                Text(
+                  'Switch ',
+                  style: TextStyle(fontSize: 10, color: Colors.black),
+                ),
+                Text(
+                  ' On/OFF',
+                  style: TextStyle(fontSize: 10, color: Colors.black),
+                ),
               ],
             ),
           ),
-
-          Switch(activeTrackColor: Colors.blue,inactiveTrackColor: Colors.green.withOpacity(0.4),
-          inactiveThumbColor: Colors.yellow,
-          value: shopValue,
-          onChanged: (val)=>setState(()=>this.shopValue=val ),
-          activeColor: Theme.of(context).primaryColor,
-        ),
+          Switch(
+            activeTrackColor: Colors.blue,
+            inactiveTrackColor: Colors.green.withOpacity(0.4),
+            inactiveThumbColor: Colors.yellow,
+            value: shopValue,
+            onChanged: (val) => setState(() => this.shopValue = val),
+            activeColor: Theme.of(context).primaryColor,
+          ),
           Padding(
             padding: const EdgeInsets.only(right: 15, top: 07, left: 15),
             child: InkWell(
@@ -105,7 +113,6 @@ class _HomeScreenState extends BaseRouteState {
               ),
             ),
           ),
-
         ],
       ),
       drawer: DrawerWidget(
@@ -241,90 +248,97 @@ class _HomeScreenState extends BaseRouteState {
           //       )
           //     : _shimmer1(),
 
-
           Padding(
-            padding:
-                const EdgeInsets.only( left: 10, right: 10, bottom: 20),
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
             child: Column(
               children: [
-                Container(child:
-                GridView.count(
-                  padding: EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 10),
-                  shrinkWrap: true,
-                  crossAxisCount: 3,
-                  childAspectRatio: 5 / 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 8,
-                  children: [ Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                    color: Colors.grey,
-
-                    child: Center(
-                        child: Padding(
+                Container(
+                  child: GridView.count(
+                    padding: EdgeInsets.only(
+                        left: 10, right: 10, top: 20, bottom: 10),
+                    shrinkWrap: true,
+                    crossAxisCount: 3,
+                    childAspectRatio: 5 / 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 8,
+                    children: [
+                      Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        color: Colors.grey,
+                        child: Center(
+                            child: Padding(
                           padding: const EdgeInsets.all(4),
-                          child: Text(
-                            '12 am'),
+                          child: Text('12 am'),
                         )),
-                  ),Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                    color: Colors.grey,
-
-                    child: Center(
-                        child: Padding(
+                      ),
+                      Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        color: Colors.grey,
+                        child: Center(
+                            child: Padding(
                           padding: const EdgeInsets.all(4),
-                          child: Text(
-                              '12 am'),
+                          child: Text('12 am'),
                         )),
-                  ),Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                    color: Colors.grey,
-
-                    child: Center(
-                        child: Padding(
+                      ),
+                      Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        color: Colors.grey,
+                        child: Center(
+                            child: Padding(
                           padding: const EdgeInsets.all(4),
-                          child: Text(
-                              '12 am'),
+                          child: Text('12 am'),
                         )),
-                  ),Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                    color: Colors.grey,
-
-                    child: Center(
-                        child: Padding(
+                      ),
+                      Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        color: Colors.grey,
+                        child: Center(
+                            child: Padding(
                           padding: const EdgeInsets.all(4),
-                          child: Text(
-                              '12 am'),
+                          child: Text('12 am'),
                         )),
-                  ),Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                    color: Colors.grey,
-
-                    child: Center(
-                        child: Padding(
+                      ),
+                      Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        color: Colors.grey,
+                        child: Center(
+                            child: Padding(
                           padding: const EdgeInsets.all(4),
-                          child: Text(
-                              '12 am'),
+                          child: Text('12 am'),
                         )),
-                  ),Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-                    color: Colors.grey,
-
-                    child: Center(
-                        child: Padding(
+                      ),
+                      Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        color: Colors.grey,
+                        child: Center(
+                            child: Padding(
                           padding: const EdgeInsets.all(4),
-                          child: Text(
-                              '12 am'),
+                          child: Text('12 am'),
                         )),
-                  ),],
-                )
-                ,),
-                FlatButton(onPressed: (){
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (context) => Calendar()),
-                  );
-                },child: Text('More Dates',),color: Colors.blue,),
-
+                      ),
+                    ],
+                  ),
+                ),
+                FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => Calendar()),
+                    );
+                  },
+                  child: Text(
+                    'More Dates',
+                  ),
+                  color: Colors.blue,
+                ),
+                SizedBox(
+                  height: 15,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -346,7 +360,9 @@ class _HomeScreenState extends BaseRouteState {
                                             .subtitle2,
                                       ),
                                     ),
-                                    Text(AppLocalizations.of(context).lbl_services,
+                                    Text(
+                                        AppLocalizations.of(context)
+                                            .lbl_services,
                                         style: Theme.of(context)
                                             .primaryTextTheme
                                             .subtitle2),
@@ -363,7 +379,8 @@ class _HomeScreenState extends BaseRouteState {
                                                   .copyWith(color: Colors.blue),
                                             )
                                           : Center(
-                                              child: CircularProgressIndicator(),
+                                              child:
+                                                  CircularProgressIndicator(),
                                             ),
                                     ),
                                     Container(
@@ -391,7 +408,8 @@ class _HomeScreenState extends BaseRouteState {
                                             frequency: 0.5,
                                           ),
                                           child: Container(
-                                              height: 40, color: Color(0xFFFA692C)),
+                                              height: 40,
+                                              color: Color(0xFFFA692C)),
                                         ),
                                         Sinusoidal(
                                           model: const SinusoidalModel(
@@ -423,7 +441,8 @@ class _HomeScreenState extends BaseRouteState {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 20),
                                       child: Text(
-                                        AppLocalizations.of(context).lbl_pending,
+                                        AppLocalizations.of(context)
+                                            .lbl_pending,
                                         style: Theme.of(context)
                                             .primaryTextTheme
                                             .subtitle2,
@@ -449,7 +468,8 @@ class _HomeScreenState extends BaseRouteState {
                                                       color: Color(0xFFFBD18B)),
                                             )
                                           : Center(
-                                              child: CircularProgressIndicator(),
+                                              child:
+                                                  CircularProgressIndicator(),
                                             ),
                                     ),
                                     Container(
@@ -477,7 +497,8 @@ class _HomeScreenState extends BaseRouteState {
                                             frequency: 0.5,
                                           ),
                                           child: Container(
-                                              height: 40, color: Color(0xFFFA692C)),
+                                              height: 40,
+                                              color: Color(0xFFFA692C)),
                                         ),
                                         Sinusoidal(
                                           model: const SinusoidalModel(
@@ -509,13 +530,16 @@ class _HomeScreenState extends BaseRouteState {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 20),
                                       child: Text(
-                                        AppLocalizations.of(context).lbl_completed,
+                                        AppLocalizations.of(context)
+                                            .lbl_completed,
                                         style: Theme.of(context)
                                             .primaryTextTheme
                                             .subtitle2,
                                       ),
                                     ),
-                                    Text(AppLocalizations.of(context).lbl_services,
+                                    Text(
+                                        AppLocalizations.of(context)
+                                            .lbl_services,
                                         style: Theme.of(context)
                                             .primaryTextTheme
                                             .subtitle2),
@@ -533,7 +557,8 @@ class _HomeScreenState extends BaseRouteState {
                                                       color: Color(0xFF49EC97)),
                                             )
                                           : Center(
-                                              child: CircularProgressIndicator(),
+                                              child:
+                                                  CircularProgressIndicator(),
                                             ),
                                     ),
                                     Container(
@@ -561,7 +586,8 @@ class _HomeScreenState extends BaseRouteState {
                                             frequency: 0.5,
                                           ),
                                           child: Container(
-                                              height: 40, color: Color(0xFFFA692C)),
+                                              height: 40,
+                                              color: Color(0xFFFA692C)),
                                         ),
                                         Sinusoidal(
                                           model: const SinusoidalModel(
@@ -583,235 +609,245 @@ class _HomeScreenState extends BaseRouteState {
                         : _shimmer2()
                   ],
                 ),
-                SizedBox(height: 15,),
+                SizedBox(
+                  height: 15,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     _isDataLoaded
                         ? Container(
-                      margin: EdgeInsets.only(left: 55, right: 5),
-                      height: 172,
-                      width: (MediaQuery.of(context).size.width / 3) - 10,
-                      child: Card(
-                          elevation: 5,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20),
-                                child: Text(
-                                  AppLocalizations.of(context).lbl_total,
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .subtitle2,
-                                ),
-                              ),
-                              Text(AppLocalizations.of(context).lbl_booking,
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .subtitle2),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: _isDataLoaded
-                                    ? Text(
-                                  _homeData != null
-                                      ? '${_homeData.allOrders}'
-                                      : '0',
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .overline
-                                      .copyWith(color: Colors.blue),
-                                )
-                                    : Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: 10),
-                                height: 40,
-                                width: 150,
-                                child: Stack(children: [
-                                  Sinusoidal(
-                                    model: const SinusoidalModel(
-                                      formular: WaveFormular.travelling,
-                                      amplitude: 20,
-                                      waves: 2.5,
-                                      frequency: 1,
+                            margin: EdgeInsets.only(left: 55, right: 5),
+                            height: 172,
+                            width: (MediaQuery.of(context).size.width / 3) - 10,
+                            child: Card(
+                                elevation: 5,
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 20),
+                                      child: Text(
+                                        AppLocalizations.of(context).lbl_total,
+                                        style: Theme.of(context)
+                                            .primaryTextTheme
+                                            .subtitle2,
+                                      ),
                                     ),
-                                    child: Container(
+                                    Text(
+                                        AppLocalizations.of(context)
+                                            .lbl_booking,
+                                        style: Theme.of(context)
+                                            .primaryTextTheme
+                                            .subtitle2),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: _isDataLoaded
+                                          ? Text(
+                                              _homeData != null
+                                                  ? '${_homeData.allOrders}'
+                                                  : '0',
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .overline
+                                                  .copyWith(color: Colors.blue),
+                                            )
+                                          : Center(
+                                              child:
+                                                  CircularProgressIndicator(),
+                                            ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(top: 10),
                                       height: 40,
-                                      color: Color(0xFF8EEBEC),
-                                    ),
-                                  ),
-                                  Sinusoidal(
-                                    model: const SinusoidalModel(
-                                      formular: WaveFormular.normal,
-                                      amplitude: 10,
-                                      waves: 2.5,
-                                      frequency: 0.5,
-                                    ),
-                                    child: Container(
-                                        height: 40, color: Color(0xFFFA692C)),
-                                  ),
-                                  Sinusoidal(
-                                    model: const SinusoidalModel(
-                                      formular: WaveFormular.standing,
-                                      amplitude: 20,
-                                      waves: 2.5,
-                                      frequency: 1,
-                                    ),
-                                    child: Container(
-                                      height: 40,
-                                      color: Color(0xFF34434D),
-                                    ),
-                                  ),
-                                ]),
-                              )
-                            ],
-                          )),
-                    )
+                                      width: 150,
+                                      child: Stack(children: [
+                                        Sinusoidal(
+                                          model: const SinusoidalModel(
+                                            formular: WaveFormular.travelling,
+                                            amplitude: 20,
+                                            waves: 2.5,
+                                            frequency: 1,
+                                          ),
+                                          child: Container(
+                                            height: 40,
+                                            color: Color(0xFF8EEBEC),
+                                          ),
+                                        ),
+                                        Sinusoidal(
+                                          model: const SinusoidalModel(
+                                            formular: WaveFormular.normal,
+                                            amplitude: 10,
+                                            waves: 2.5,
+                                            frequency: 0.5,
+                                          ),
+                                          child: Container(
+                                              height: 40,
+                                              color: Color(0xFFFA692C)),
+                                        ),
+                                        Sinusoidal(
+                                          model: const SinusoidalModel(
+                                            formular: WaveFormular.standing,
+                                            amplitude: 20,
+                                            waves: 2.5,
+                                            frequency: 1,
+                                          ),
+                                          child: Container(
+                                            height: 40,
+                                            color: Color(0xFF34434D),
+                                          ),
+                                        ),
+                                      ]),
+                                    )
+                                  ],
+                                )),
+                          )
                         : _shimmer2(),
                     _isDataLoaded
                         ? Container(
-                      margin: EdgeInsets.only(left: 5, right: 55),
-                      height: 172,
-                      width: (MediaQuery.of(context).size.width / 3) - 10,
-                      child: Card(
-                          elevation: 5,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20),
-                                child: Text(
-                                  AppLocalizations.of(context).lbl_total,
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .subtitle2,
-                                ),
-                              ),
-                              Text(AppLocalizations.of(context).lbl_earning,
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .subtitle2),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: _isDataLoaded
-                                    ? Text(
-                                  _homeData != null
-                                      ? '${_homeData.allOrders}'
-                                      : '0',
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .overline
-                                      .copyWith(color: Colors.blue),
-                                )
-                                    : Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(top: 10),
-                                height: 40,
-                                width: 150,
-                                child: Stack(children: [
-                                  Sinusoidal(
-                                    model: const SinusoidalModel(
-                                      formular: WaveFormular.travelling,
-                                      amplitude: 20,
-                                      waves: 2.5,
-                                      frequency: 1,
+                            margin: EdgeInsets.only(left: 5, right: 55),
+                            height: 172,
+                            width: (MediaQuery.of(context).size.width / 3) - 10,
+                            child: Card(
+                                elevation: 5,
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 20),
+                                      child: Text(
+                                        AppLocalizations.of(context).lbl_total,
+                                        style: Theme.of(context)
+                                            .primaryTextTheme
+                                            .subtitle2,
+                                      ),
                                     ),
-                                    child: Container(
+                                    Text(
+                                        AppLocalizations.of(context)
+                                            .lbl_earning,
+                                        style: Theme.of(context)
+                                            .primaryTextTheme
+                                            .subtitle2),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: _isDataLoaded
+                                          ? Text(
+                                              _homeData != null
+                                                  ? '${_homeData.allOrders}'
+                                                  : '0',
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .overline
+                                                  .copyWith(color: Colors.blue),
+                                            )
+                                          : Center(
+                                              child:
+                                                  CircularProgressIndicator(),
+                                            ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(top: 10),
                                       height: 40,
-                                      color: Color(0xFF8EEBEC),
-                                    ),
-                                  ),
-                                  Sinusoidal(
-                                    model: const SinusoidalModel(
-                                      formular: WaveFormular.normal,
-                                      amplitude: 10,
-                                      waves: 2.5,
-                                      frequency: 0.5,
-                                    ),
-                                    child: Container(
-                                        height: 40, color: Color(0xFFFA692C)),
-                                  ),
-                                  Sinusoidal(
-                                    model: const SinusoidalModel(
-                                      formular: WaveFormular.standing,
-                                      amplitude: 20,
-                                      waves: 2.5,
-                                      frequency: 1,
-                                    ),
-                                    child: Container(
-                                      height: 40,
-                                      color: Color(0xFF34434D),
-                                    ),
-                                  ),
-                                ]),
-                              )
-                            ],
-                          )),
-                    )
+                                      width: 150,
+                                      child: Stack(children: [
+                                        Sinusoidal(
+                                          model: const SinusoidalModel(
+                                            formular: WaveFormular.travelling,
+                                            amplitude: 20,
+                                            waves: 2.5,
+                                            frequency: 1,
+                                          ),
+                                          child: Container(
+                                            height: 40,
+                                            color: Color(0xFF8EEBEC),
+                                          ),
+                                        ),
+                                        Sinusoidal(
+                                          model: const SinusoidalModel(
+                                            formular: WaveFormular.normal,
+                                            amplitude: 10,
+                                            waves: 2.5,
+                                            frequency: 0.5,
+                                          ),
+                                          child: Container(
+                                              height: 40,
+                                              color: Color(0xFFFA692C)),
+                                        ),
+                                        Sinusoidal(
+                                          model: const SinusoidalModel(
+                                            formular: WaveFormular.standing,
+                                            amplitude: 20,
+                                            waves: 2.5,
+                                            frequency: 1,
+                                          ),
+                                          child: Container(
+                                            height: 40,
+                                            color: Color(0xFF34434D),
+                                          ),
+                                        ),
+                                      ]),
+                                    )
+                                  ],
+                                )),
+                          )
                         : _shimmer2(),
-
                   ],
                 ),
               ],
             ),
-          ),_isDataLoaded
+          ),
+          _isDataLoaded
               ? Card(
-              elevation: 5,
-              margin: EdgeInsets.only(left: 12, right: 10, top: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: global.isRTL
-                        ? EdgeInsets.only(right: 10, top: 10)
-                        : EdgeInsets.only(left: 10, top: 10),
-                    child: Text(
-                      AppLocalizations.of(context).lbl_weekly_earn,
-                      style: Theme.of(context).primaryTextTheme.caption,
-                    ),
-                  ),
-                  _homeData.day1Details.earning == 0 &&
-                      _homeData.day2Details.earning == 0 &&
-                      _homeData.day3Details.earning == 0 &&
-                      _homeData.day4Details.earning == 0 &&
-                      _homeData.day5Details.earning == 0 &&
-                      _homeData.day6Details.earning == 0 &&
-                      _homeData.day7Details.earning == 0
-                      ? Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height -
-                        ((MediaQuery.of(context).size.height * 0.33) +
-                            50 +
-                            220),
-                    child: Center(
-                      child: Text(
-                        AppLocalizations.of(context)
-                            .txt_weekly_earn_will_shown_here,
-                        style: Theme.of(context)
-                            .primaryTextTheme
-                            .subtitle2,
+                  elevation: 5,
+                  margin: EdgeInsets.only(left: 12, right: 10, top: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: global.isRTL
+                            ? EdgeInsets.only(right: 10, top: 10)
+                            : EdgeInsets.only(left: 10, top: 10),
+                        child: Text(
+                          AppLocalizations.of(context).lbl_weekly_earn,
+                          style: Theme.of(context).primaryTextTheme.caption,
+                        ),
                       ),
-                    ),
-                  )
-                      : Container(
-                      margin: EdgeInsets.only(
-                          top: 5, left: 55, right: 30, bottom: 5),
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height -
-                          ((MediaQuery.of(context).size.height * 0.33) +
-                              50 +
-                              220),
-                      child: _isDataLoaded
-                          ? _charts()
-                          : Center(
-                        child: CircularProgressIndicator(),
-                      ))
-                ],
-              ))
+                      _homeData.day1Details.earning == 0 &&
+                              _homeData.day2Details.earning == 0 &&
+                              _homeData.day3Details.earning == 0 &&
+                              _homeData.day4Details.earning == 0 &&
+                              _homeData.day5Details.earning == 0 &&
+                              _homeData.day6Details.earning == 0 &&
+                              _homeData.day7Details.earning == 0
+                          ? Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height -
+                                  ((MediaQuery.of(context).size.height * 0.33) +
+                                      50 +
+                                      220),
+                              child: Center(
+                                child: Text(
+                                  AppLocalizations.of(context)
+                                      .txt_weekly_earn_will_shown_here,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .subtitle2,
+                                ),
+                              ),
+                            )
+                          : Container(
+                              margin: EdgeInsets.only(
+                                  top: 5, left: 55, right: 30, bottom: 5),
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height -
+                                  ((MediaQuery.of(context).size.height * 0.33) +
+                                      50 +
+                                      220),
+                              child: _isDataLoaded
+                                  ? _charts()
+                                  : Center(
+                                      child: CircularProgressIndicator(),
+                                    ))
+                    ],
+                  ))
               : _shimmer4(),
           _isDataLoaded
               ? Container(
@@ -884,7 +920,6 @@ class _HomeScreenState extends BaseRouteState {
   }
 
   init() async {
-
     try {
       await getHomePage();
       _isDataLoaded = true;
@@ -908,7 +943,8 @@ class _HomeScreenState extends BaseRouteState {
 
   @override
   void initState() {
-    super.initState(); if (global.user.online_status != null) {
+    super.initState();
+    if (global.user.online_status != null) {
       if (global.user.online_status == "ON") {
         setState(() {
           shopValue = true;
@@ -922,6 +958,7 @@ class _HomeScreenState extends BaseRouteState {
 
     init();
   }
+
   _saveSetting() async {
     try {
       if (shopValue) {
@@ -945,12 +982,13 @@ class _HomeScreenState extends BaseRouteState {
             showDialog(
                 context: context,
                 builder: (BuildContext context) => SettingSaveDialog(
-                  a: widget.analytics,
-                  o: widget.observer,
-                ));
+                      a: widget.analytics,
+                      o: widget.observer,
+                    ));
           } else {
             hideLoader();
-            showSnackBar(key: _scaffoldKey, snackBarMessage: '${result.message}');
+            showSnackBar(
+                key: _scaffoldKey, snackBarMessage: '${result.message}');
           }
         });
       } else {
@@ -958,6 +996,7 @@ class _HomeScreenState extends BaseRouteState {
       }
     } catch (e) {}
   }
+
   void timetsamp() {
     try {
       var duration = Duration(milliseconds: 500);
@@ -1149,76 +1188,78 @@ class _HomeScreenState extends BaseRouteState {
 
   Widget _shimmer4() {
     return Shimmer.fromColors(
-        baseColor: Colors.grey[300],
-        highlightColor: Colors.grey[100],
-        child: Container(
-            margin: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height -
-                ((MediaQuery.of(context).size.height * 0.33) + 50 + 220),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  height: MediaQuery.of(context).size.height -
-                      ((MediaQuery.of(context).size.height * 0.33) + 50 + 220),
-                  width: 20,
-                  child: Card(),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  height: 155,
-                  width: 20,
-                  child: Card(),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  height: 200,
-                  width: 20,
-                  child: Card(),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  height: MediaQuery.of(context).size.height -
-                      ((MediaQuery.of(context).size.height * 0.33) + 50 + 50),
-                  width: 20,
-                  child: Card(),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  height: 125,
-                  width: 20,
-                  child: Card(),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  height: 100,
-                  width: 20,
-                  child: Card(),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  height: MediaQuery.of(context).size.height -
-                      ((MediaQuery.of(context).size.height * 0.33) + 50 + 100),
-                  width: 20,
-                  child: Card(),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  height: MediaQuery.of(context).size.height -
-                      ((MediaQuery.of(context).size.height * 0.33) + 50 + 100),
-                  width: 20,
-                  child: Card(),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 5, right: 5),
-                  height: 150,
-                  width: 20,
-                  child: Card(),
-                ),
-              ],
-            ),),);
+      baseColor: Colors.grey[300],
+      highlightColor: Colors.grey[100],
+      child: Container(
+        margin: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height -
+            ((MediaQuery.of(context).size.height * 0.33) + 50 + 220),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: 5, right: 5),
+              height: MediaQuery.of(context).size.height -
+                  ((MediaQuery.of(context).size.height * 0.33) + 50 + 220),
+              width: 20,
+              child: Card(),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 5, right: 5),
+              height: 155,
+              width: 20,
+              child: Card(),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 5, right: 5),
+              height: 200,
+              width: 20,
+              child: Card(),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 5, right: 5),
+              height: MediaQuery.of(context).size.height -
+                  ((MediaQuery.of(context).size.height * 0.33) + 50 + 50),
+              width: 20,
+              child: Card(),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 5, right: 5),
+              height: 125,
+              width: 20,
+              child: Card(),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 5, right: 5),
+              height: 100,
+              width: 20,
+              child: Card(),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 5, right: 5),
+              height: MediaQuery.of(context).size.height -
+                  ((MediaQuery.of(context).size.height * 0.33) + 50 + 100),
+              width: 20,
+              child: Card(),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 5, right: 5),
+              height: MediaQuery.of(context).size.height -
+                  ((MediaQuery.of(context).size.height * 0.33) + 50 + 100),
+              width: 20,
+              child: Card(),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 5, right: 5),
+              height: 150,
+              width: 20,
+              child: Card(),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

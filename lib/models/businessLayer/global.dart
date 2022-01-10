@@ -14,9 +14,11 @@ SharedPreferences sp;
 Currency currency = new Currency();
 CurrentUser user = new CurrentUser();
   // String baseUrl = 'https://thecodecafe.in/gofresha/api/partner/';
-  String baseUrl = 'https://gofresha.tecmanic.com/api/partner/';
+  /*String baseUrl = 'https://gofresha.tecmanic.com/api/partner/';*/
+  String baseUrl = 'https://soft-fix.in/hairway/api/partner/';
 //  String baseUrlForImage = 'https://thecodecafe.in/gofresha/';
- String baseUrlForImage = 'https://gofresha.tecmanic.com/';
+/* String baseUrlForImage = 'https://gofresha.tecmanic.com/';*/
+ String baseUrlForImage = 'https://soft-fix.in/hairway/';
 List<String> rtlLanguageCodeLList = ['ar', 'arc', 'ckb', 'dv', 'fa', 'ha', 'he', 'khw', 'ks', 'ps', 'ur', 'uz_AF', 'yi'];
 String languageCode;
 

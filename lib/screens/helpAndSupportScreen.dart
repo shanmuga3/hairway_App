@@ -1,9 +1,11 @@
+
 import 'package:app/models/businessLayer/baseRoute.dart';
 import 'package:app/models/faqModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HelpAndSupportScreen extends BaseRoute {
   HelpAndSupportScreen({a, o}) : super(a: a, o: o, r: 'HelpAndSupportScreen');
@@ -62,15 +64,20 @@ class _HelpAndSupportScreenState extends BaseRouteState {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          FaIcon(
-                            FontAwesomeIcons.whatsapp,color: Colors.green,
-                            size: 50,
-                          ),
+                         Padding(
+                           padding: const EdgeInsets.only(bottom: 10.0),
+                           child: IconButton(
+                             onPressed: (){
+                               openWhatsApp(context);
+                             },
+                             icon: FaIcon(FontAwesomeIcons.whatsapp,size: 50,color:Colors.green ,),
+                           ),
+                         ),
                           SizedBox(
                             width: 25,
                           ),
                           Text(
-                            '+917784026558',
+                            '+918181813104',
                             style: TextStyle(fontWeight: FontWeight.bold),
                             textAlign: TextAlign.right,
                           )
@@ -87,15 +94,20 @@ class _HelpAndSupportScreenState extends BaseRouteState {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          FaIcon(
-                            FontAwesomeIcons.phone,color: Colors.blue,
-                            size: 50,
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: IconButton(
+                              onPressed: (){
+                               callNumberStore(8181813104);
+                              },
+                              icon: FaIcon(FontAwesomeIcons.phone,size: 50,color:Colors.blue ,),
+                            ),
                           ),
                           SizedBox(
                             width: 35,
                           ),
                           Text(
-                            '+917784026558',
+                            '+918181813104',
                             style: TextStyle(fontWeight: FontWeight.bold),
                             textAlign: TextAlign.right,
                           )
@@ -185,4 +197,15 @@ class _HelpAndSupportScreenState extends BaseRouteState {
 //       ),
 //     );
 //   }
+}
+
+void openWhatsApp(
+     BuildContext context) async {
+  var store_number ='+918181813104';
+  String urlk = "https://wa.me/$store_number";
+  var dd = await launch(urlk);
+  print(dd);
+}
+void callNumberStore(store_number) async {
+  await launch('tel:$store_number');
 }

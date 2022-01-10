@@ -35,7 +35,9 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body) != null && json.decode(response.body)["data"] != null) {
+      if (response.statusCode == 200 &&
+          json.decode(response.body) != null &&
+          json.decode(response.body)["data"] != null) {
         recordList = Coupon.fromJson(json.decode(response.body)["data"]);
       } else {
         recordList = null;
@@ -46,15 +48,27 @@ class APIHelper {
     }
   }
 
-  Future<dynamic> addExpert(int id, String staffName, String staffDescription, File _Image) async {
+  Future<dynamic> addExpert(
+      int id, String staffName, String staffDescription, File _Image) async {
     try {
+      // String jjjj = ""+id;
+
+      print("asdasd" +
+          staffName +
+          "  asda  :   " +
+          staffDescription +
+          "    id    :    " +
+          id.toString());
+
       Response response;
       var dio = Dio();
       var formData = FormData.fromMap({
         'vendor_id': id,
         'staff_name': staffName,
         'staff_description': staffDescription,
-        'staff_image': _Image != null ? await MultipartFile.fromFile(_Image.path.toString()) : null,
+        'staff_image': _Image != null
+            ? await MultipartFile.fromFile(_Image.path.toString())
+            : null,
       });
       response = await dio.post('${global.baseUrl}add_expert',
           data: formData,
@@ -67,7 +81,7 @@ class APIHelper {
       } else {
         recordList = null;
       }
-        return getAPIResultDio(response, recordList);
+      return getAPIResultDio(response, recordList);
     } catch (e) {
       print("Exception - addExpert(): " + e.toString());
     }
@@ -79,9 +93,11 @@ class APIHelper {
       var dio = Dio();
       var formData = FormData.fromMap({
         'vendor_id': id,
-        'image[]': _Image != null ? await MultipartFile.fromFile(_Image.path.toString()) : null,
+        'image[]': _Image != null
+            ? await MultipartFile.fromFile(_Image.path.toString())
+            : null,
       });
-      
+
       response = await dio.post('${global.baseUrl}add_gallery',
           data: formData,
           options: Options(
@@ -89,18 +105,18 @@ class APIHelper {
           ));
       dynamic recordList;
       if (response.statusCode == 200 && response.data["status"] == "1") {
-   
-         recordList = null;
+        recordList = null;
       } else {
-      recordList = null;
+        recordList = null;
       }
-        return getAPIResultDio(response, recordList);
+      return getAPIResultDio(response, recordList);
     } catch (e) {
       print("Exception - addGallery(): " + e.toString());
     }
   }
 
-  Future<dynamic> addProduct(int id, String productName, String price, String quantity, String description, File product_image) async {
+  Future<dynamic> addProduct(int id, String productName, String price,
+      String quantity, String description, File product_image) async {
     try {
       Response response;
       var dio = Dio();
@@ -110,9 +126,11 @@ class APIHelper {
         'price': price,
         'quantity': quantity,
         'description': description,
-        'product_image': product_image != null ? await MultipartFile.fromFile(product_image.path.toString()) : null,
+        'product_image': product_image != null
+            ? await MultipartFile.fromFile(product_image.path.toString())
+            : null,
       });
-      
+
       response = await dio.post('${global.baseUrl}product_add',
           data: formData,
           options: Options(
@@ -120,12 +138,11 @@ class APIHelper {
           ));
       dynamic recordList;
       if (response.statusCode == 200 && response.data["status"] == "1") {
-     
         recordList = Product.fromJson(response.data['data']);
       } else {
         recordList = null;
       }
-        return getAPIResultDio(response, recordList);
+      return getAPIResultDio(response, recordList);
     } catch (e) {
       print("Exception - addProduct(): " + e.toString());
     }
@@ -138,9 +155,11 @@ class APIHelper {
       var formData = FormData.fromMap({
         'vendor_id': id,
         'service_name': serviceName,
-        'service_image': _Image != null ? await MultipartFile.fromFile(_Image.path.toString()) : null,
+        'service_image': _Image != null
+            ? await MultipartFile.fromFile(_Image.path.toString())
+            : null,
       });
-      
+
       response = await dio.post('${global.baseUrl}add_service',
           data: formData,
           options: Options(
@@ -152,7 +171,7 @@ class APIHelper {
       } else {
         recordList = null;
       }
-    return getAPIResultDio(response, recordList);
+      return getAPIResultDio(response, recordList);
     } catch (e) {
       print("Exception - addService(): " + e.toString());
     }
@@ -167,8 +186,11 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body) != null && json.decode(response.body)["data"] != null) {
-        recordList = ServiceVariant.fromJson(json.decode(response.body)["data"]);
+      if (response.statusCode == 200 &&
+          json.decode(response.body) != null &&
+          json.decode(response.body)["data"] != null) {
+        recordList =
+            ServiceVariant.fromJson(json.decode(response.body)["data"]);
       } else {
         recordList = null;
       }
@@ -189,7 +211,8 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = BookingConfirm.fromJson(json.decode(response.body)["data"]);
+          recordList =
+              BookingConfirm.fromJson(json.decode(response.body)["data"]);
         }
       } else {
         recordList = null;
@@ -208,9 +231,11 @@ class APIHelper {
         body: json.encode({"store_order_id": id}),
       );
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body)["status"] == "1") {
+      if (response.statusCode == 200 &&
+          json.decode(response.body)["status"] == "1") {
         if (json.decode(response.body)["data"] != null) {
-          recordList = ProductOrder.fromJson(json.decode(response.body)["data"]);
+          recordList =
+              ProductOrder.fromJson(json.decode(response.body)["data"]);
         }
       } else {
         recordList = null;
@@ -230,7 +255,8 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body)["status"] == "1" ) {
+      if (response.statusCode == 200 &&
+          json.decode(response.body)["status"] == "1") {
         if (json.decode(response.body)["data"] != null) {
           recordList = null;
         }
@@ -243,16 +269,24 @@ class APIHelper {
     }
   }
 
-  Future<dynamic> changePassword(int vendorId, String currentPassword, String password, String confirmPassword) async {
+  Future<dynamic> changePassword(int vendorId, String currentPassword,
+      String password, String confirmPassword) async {
     try {
       final response = await http.post(
         Uri.parse("${global.baseUrl}profile_change_password"),
         headers: await global.getApiHeaders(false),
-        body: json.encode({"vendor_id": vendorId, "current_password": currentPassword, "password": password, "password_confirmation": confirmPassword}),
+        body: json.encode({
+          "vendor_id": vendorId,
+          "current_password": currentPassword,
+          "password": password,
+          "password_confirmation": confirmPassword
+        }),
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body) != null && json.decode(response.body)["data"] != null) {
+      if (response.statusCode == 200 &&
+          json.decode(response.body) != null &&
+          json.decode(response.body)["data"] != null) {
         recordList = Coupon.fromJson(json.decode(response.body)["data"]);
       } else {
         recordList = null;
@@ -263,7 +297,8 @@ class APIHelper {
     }
   }
 
-  Future<dynamic> changePasswordFromOtp(String vendorEmail, String password) async {
+  Future<dynamic> changePasswordFromOtp(
+      String vendorEmail, String password) async {
     try {
       final response = await http.post(
         Uri.parse("${global.baseUrl}change_password"),
@@ -272,7 +307,9 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body) != null && json.decode(response.body)["data"] != null) {
+      if (response.statusCode == 200 &&
+          json.decode(response.body) != null &&
+          json.decode(response.body)["data"] != null) {
         recordList = Coupon.fromJson(json.decode(response.body)["data"]);
       } else {
         recordList = null;
@@ -292,9 +329,11 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body)["status"] == "1" ) {
+      if (response.statusCode == 200 &&
+          json.decode(response.body)["status"] == "1") {
         if (json.decode(response.body)["data"] != null) {
-          recordList = ProductOrder.fromJson(json.decode(response.body)["data"]);
+          recordList =
+              ProductOrder.fromJson(json.decode(response.body)["data"]);
         }
       } else {
         recordList = null;
@@ -356,7 +395,8 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body)["status"] == "1" ) {
+      if (response.statusCode == 200 &&
+          json.decode(response.body)["status"] == "1") {
         recordList = response.body;
       } else {
         recordList = null;
@@ -376,7 +416,8 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body)["status"] == "1") {
+      if (response.statusCode == 200 &&
+          json.decode(response.body)["status"] == "1") {
         recordList = response.body;
       } else {
         recordList = null;
@@ -416,7 +457,8 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body)["status"] == "1") {
+      if (response.statusCode == 200 &&
+          json.decode(response.body)["status"] == "1") {
         recordList = response.body;
       } else {
         recordList = null;
@@ -429,7 +471,6 @@ class APIHelper {
 
   Future<dynamic> deleteService(int id) async {
     try {
-       
       final response = await http.post(
         Uri.parse("${global.baseUrl}delete_service"),
         headers: await global.getApiHeaders(false),
@@ -437,7 +478,8 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body)["status"] == "1" ) {
+      if (response.statusCode == 200 &&
+          json.decode(response.body)["status"] == "1") {
         recordList = response.body;
       } else {
         recordList = null;
@@ -457,7 +499,8 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body)["status"] == "1" )  {
+      if (response.statusCode == 200 &&
+          json.decode(response.body)["status"] == "1") {
         recordList = response.body;
       } else {
         recordList = null;
@@ -468,7 +511,8 @@ class APIHelper {
     }
   }
 
-  Future<dynamic> editExpert(int vendorId, String staffName, String staffDescription, File _Image, int staffId) async {
+  Future<dynamic> editExpert(int vendorId, String staffName,
+      String staffDescription, File _Image, int staffId) async {
     try {
       Response response;
       var dio = Dio();
@@ -477,9 +521,11 @@ class APIHelper {
         'staff_name': staffName,
         'staff_description': staffDescription,
         'staff_id': staffId,
-        'staff_image': _Image != null ? await MultipartFile.fromFile(_Image.path.toString()) : null,
+        'staff_image': _Image != null
+            ? await MultipartFile.fromFile(_Image.path.toString())
+            : null,
       });
-      
+
       response = await dio.post('${global.baseUrl}edit_expert',
           data: formData,
           options: Options(
@@ -491,14 +537,21 @@ class APIHelper {
       } else {
         recordList = null;
       }
-      
-        return getAPIResultDio(response, recordList);
+
+      return getAPIResultDio(response, recordList);
     } catch (e) {
       print("Exception - editExpert(): " + e.toString());
     }
   }
 
-  Future<dynamic> editProduct(int productId, String productName, String price, String quantity, String description, int vendorId, File productImage) async {
+  Future<dynamic> editProduct(
+      int productId,
+      String productName,
+      String price,
+      String quantity,
+      String description,
+      int vendorId,
+      File productImage) async {
     try {
       Response response;
       var dio = Dio();
@@ -509,9 +562,11 @@ class APIHelper {
         'price': price,
         'quantity': quantity,
         'product_id': productId,
-        'product_image': productImage != null ? await MultipartFile.fromFile(productImage.path.toString()) : null,
+        'product_image': productImage != null
+            ? await MultipartFile.fromFile(productImage.path.toString())
+            : null,
       });
-      
+
       response = await dio.post('${global.baseUrl}product_edit',
           data: formData,
           options: Options(
@@ -523,14 +578,15 @@ class APIHelper {
       } else {
         recordList = null;
       }
-      
-  return getAPIResultDio(response, recordList);
+
+      return getAPIResultDio(response, recordList);
     } catch (e) {
       print("Exception - editProduct(): " + e.toString());
     }
   }
 
-  Future<dynamic> editService(int vendorId, String serviceName, File _Image, int serviceId) async {
+  Future<dynamic> editService(
+      int vendorId, String serviceName, File _Image, int serviceId) async {
     try {
       Response response;
       var dio = Dio();
@@ -538,9 +594,11 @@ class APIHelper {
         'vendor_id': vendorId,
         'service_name': serviceName,
         'service_id': serviceId,
-        'service_image': _Image != null ? await MultipartFile.fromFile(_Image.path.toString()) : null,
+        'service_image': _Image != null
+            ? await MultipartFile.fromFile(_Image.path.toString())
+            : null,
       });
-      
+
       response = await dio.post('${global.baseUrl}edit_service',
           data: formData,
           options: Options(
@@ -552,7 +610,7 @@ class APIHelper {
       } else {
         recordList = null;
       }
-        return getAPIResultDio(response, recordList);
+      return getAPIResultDio(response, recordList);
     } catch (e) {
       print("Exception - editService(): " + e.toString());
     }
@@ -567,8 +625,11 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body) != null && json.decode(response.body)["data"] != null) {
-        recordList = ServiceVariant.fromJson(json.decode(response.body)["data"]);
+      if (response.statusCode == 200 &&
+          json.decode(response.body) != null &&
+          json.decode(response.body)["data"] != null) {
+        recordList =
+            ServiceVariant.fromJson(json.decode(response.body)["data"]);
       } else {
         recordList = null;
       }
@@ -587,7 +648,8 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body)["status"] == "1" ) {
+      if (response.statusCode == 200 &&
+          json.decode(response.body)["status"] == "1") {
         recordList = CurrentUser.fromJson(json.decode(response.body)["data"]);
       } else {
         recordList = null;
@@ -601,7 +663,9 @@ class APIHelper {
   dynamic getAPIResult<T>(final response, T recordList) {
     try {
       dynamic result;
+
       result = APIResult.fromJson(json.decode(response.body), recordList);
+      print("printssss:     " + response.body.toString());
       return result;
     } catch (e) {
       print("Exception - getAPIResult():" + e.toString());
@@ -629,7 +693,9 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = List<AppointmentHistory>.from(json.decode(response.body)["data"].map((x) => AppointmentHistory.fromJson(x)));
+          recordList = List<AppointmentHistory>.from(json
+              .decode(response.body)["data"]
+              .map((x) => AppointmentHistory.fromJson(x)));
         } else {
           recordList = null;
         }
@@ -641,6 +707,7 @@ class APIHelper {
       print("Exception - getAppointmentHistory(): " + e.toString());
     }
   }
+
   Future<dynamic> getBookingDetail(int id) async {
     try {
       final response = await http.post(
@@ -652,7 +719,8 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = BookingDetail.fromJson(json.decode(response.body)["data"]);
+          recordList =
+              BookingDetail.fromJson(json.decode(response.body)["data"]);
         }
       } else {
         recordList = null;
@@ -663,7 +731,7 @@ class APIHelper {
     }
   }
 
- Future<dynamic> getCoupon(int id) async {
+  Future<dynamic> getCoupon(int id) async {
     try {
       final response = await http.post(
         Uri.parse("${global.baseUrl}list_coupon"),
@@ -674,7 +742,9 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = List<Coupon>.from(json.decode(response.body)["data"].map((x) => Coupon.fromJson(x)));
+          recordList = List<Coupon>.from(json
+              .decode(response.body)["data"]
+              .map((x) => Coupon.fromJson(x)));
         } else {
           recordList = null;
         }
@@ -686,6 +756,7 @@ class APIHelper {
       print("Exception - getCoupon(): " + e.toString());
     }
   }
+
   Future<dynamic> getCurrency() async {
     try {
       final response = await http.post(
@@ -693,7 +764,8 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body)["status"] == "1") {
+      if (response.statusCode == 200 &&
+          json.decode(response.body)["status"] == "1") {
         recordList = Currency.fromJson(json.decode(response.body)["data"]);
       } else {
         recordList = null;
@@ -715,12 +787,14 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = List<Review>.from(json.decode(response.body)["data"].map((x) => Review.fromJson(x)));
+          recordList = List<Review>.from(json
+              .decode(response.body)["data"]
+              .map((x) => Review.fromJson(x)));
         } else {
           recordList = null;
         }
       } else {
-        recordList = null;  
+        recordList = null;
       }
       return getAPIResult(response, recordList);
     } catch (e) {
@@ -730,6 +804,7 @@ class APIHelper {
 
   Future<dynamic> getExperts(int id) async {
     try {
+      /*print(" faltu id:   " + id.toString());*/
       final response = await http.post(
         Uri.parse("${global.baseUrl}list_expert"),
         headers: await global.getApiHeaders(false),
@@ -739,7 +814,9 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = List<Expert>.from(json.decode(response.body)["data"].map((x) => Expert.fromJson(x)));
+          recordList = List<Expert>.from(json
+              .decode(response.body)["data"]
+              .map((x) => Expert.fromJson(x)));
         } else {
           recordList = null;
         }
@@ -750,16 +827,19 @@ class APIHelper {
     } catch (e) {
       print("Exception - getExperts(): " + e.toString());
     }
-}
+  }
 
   Future<dynamic> getFaqs() async {
     try {
-      final response = await http.post(Uri.parse("${global.baseUrl}faqs"), headers: await global.getApiHeaders(false), body: json.encode({"lang": global.languageCode}));
+      final response = await http.post(Uri.parse("${global.baseUrl}faqs"),
+          headers: await global.getApiHeaders(false),
+          body: json.encode({"lang": global.languageCode}));
 
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = List<Faqs>.from(json.decode(response.body)["data"].map((x) => Faqs.fromJson(x)));
+          recordList = List<Faqs>.from(
+              json.decode(response.body)["data"].map((x) => Faqs.fromJson(x)));
         } else {
           recordList = null;
         }
@@ -783,7 +863,9 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = List<Gallery>.from(json.decode(response.body)["data"].map((x) => Gallery.fromJson(x)));
+          recordList = List<Gallery>.from(json
+              .decode(response.body)["data"]
+              .map((x) => Gallery.fromJson(x)));
         } else {
           recordList = null;
         }
@@ -839,6 +921,7 @@ class APIHelper {
       print("Exception - getMyWallet(): " + e.toString());
     }
   }
+
   Future<dynamic> getNotification(int id) async {
     try {
       final response = await http.post(
@@ -850,7 +933,9 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = List<Notifications>.from(json.decode(response.body)["data"].map((x) => Notifications.fromJson(x)));
+          recordList = List<Notifications>.from(json
+              .decode(response.body)["data"]
+              .map((x) => Notifications.fromJson(x)));
         } else {
           recordList = null;
         }
@@ -874,7 +959,9 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = List<Review>.from(json.decode(response.body)["data"].map((x) => Review.fromJson(x)));
+          recordList = List<Review>.from(json
+              .decode(response.body)["data"]
+              .map((x) => Review.fromJson(x)));
         } else {
           recordList = null;
         }
@@ -889,12 +976,16 @@ class APIHelper {
 
   Future<dynamic> getPrivacyAndPolicy() async {
     try {
-      final response = await http.post(Uri.parse("${global.baseUrl}privacy_policy"), headers: await global.getApiHeaders(false), body: json.encode({"lang": global.languageCode}));
+      final response = await http.post(
+          Uri.parse("${global.baseUrl}privacy_policy"),
+          headers: await global.getApiHeaders(false),
+          body: json.encode({"lang": global.languageCode}));
 
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = PrivacyAndPolicy.fromJson(json.decode(response.body)["data"]);
+          recordList =
+              PrivacyAndPolicy.fromJson(json.decode(response.body)["data"]);
         } else {
           recordList = null;
         }
@@ -918,7 +1009,9 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = List<Product>.from(json.decode(response.body)["data"].map((x) => Product.fromJson(x)));
+          recordList = List<Product>.from(json
+              .decode(response.body)["data"]
+              .map((x) => Product.fromJson(x)));
         } else {
           recordList = null;
         }
@@ -942,7 +1035,9 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = List<Service>.from(json.decode(response.body)["data"].map((x) => Service.fromJson(x)));
+          recordList = List<Service>.from(json
+              .decode(response.body)["data"]
+              .map((x) => Service.fromJson(x)));
         }
       } else {
         recordList = null;
@@ -964,6 +1059,7 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         recordList = CurrentUser.fromJson(json.decode(response.body)["data"]);
+        print(response.statusCode);
       } else {
         recordList = null;
       }
@@ -984,7 +1080,9 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = List<UserRequest>.from(json.decode(response.body)["data"].map((x) => UserRequest.fromJson(x)));
+          recordList = List<UserRequest>.from(json
+              .decode(response.body)["data"]
+              .map((x) => UserRequest.fromJson(x)));
         } else {
           recordList = null;
         }
@@ -998,6 +1096,8 @@ class APIHelper {
   }
 
   Future<dynamic> loginWithEmail(CurrentUser user) async {
+
+
     try {
       final response = await http.post(
         Uri.parse("${global.baseUrl}partner_login"),
@@ -1006,7 +1106,11 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body) != null && json.decode(response.body)["data"] != null) {
+
+      if (response.statusCode == 200 &&
+          json.decode(response.body) != null &&
+          json.decode(response.body)["data"] != null) {
+        print("body" + response.body);
         recordList = CurrentUser.fromJson(json.decode(response.body)["data"]);
         recordList.token = json.decode(response.body)["token"];
       } else {
@@ -1027,7 +1131,8 @@ class APIHelper {
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body)["status"] == "1" ) {
+      if (response.statusCode == 200 &&
+          json.decode(response.body)["status"] == "1") {
         if (json.decode(response.body)["data"] != null) {
           recordList = null;
         }
@@ -1051,7 +1156,9 @@ class APIHelper {
       dynamic recordList;
       if (response.statusCode == 200) {
         if (json.decode(response.body)["data"] != null) {
-          recordList = List<ProductOrder>.from(json.decode(response.body)["data"].map((x) => ProductOrder.fromJson(x)));
+          recordList = List<ProductOrder>.from(json
+              .decode(response.body)["data"]
+              .map((x) => ProductOrder.fromJson(x)));
         }
       } else {
         recordList = null;
@@ -1067,11 +1174,14 @@ class APIHelper {
       final response = await http.post(
         Uri.parse("${global.baseUrl}shop_setting"),
         headers: await global.getApiHeaders(false),
-        body: json.encode({"vendor_id": vendorId, "online_status": onlineStatus}),
+        body:
+            json.encode({"vendor_id": vendorId, "online_status": onlineStatus}),
       );
 
       dynamic recordList;
-      if (response.statusCode == 200 && json.decode(response.body) != null && json.decode(response.body)["data"] != null) {
+      if (response.statusCode == 200 &&
+          json.decode(response.body) != null &&
+          json.decode(response.body)["data"] != null) {
         recordList = CurrentUser.fromJson(json.decode(response.body)["data"]);
       } else {
         recordList = null;
@@ -1082,7 +1192,18 @@ class APIHelper {
     }
   }
 
-  Future<dynamic> signUp(int type, String vendor_name, String owner_name, String vendor_email, String vendor_password, String device_id, String vendor_phone, String vendor_address, String description, File vendor_image) async {
+  Future<dynamic> signUp(
+      int type,
+      String vendor_name,
+      String owner_name,
+      String vendor_email,
+      String vendor_password,
+      String device_id,
+      String vendor_phone,
+      String vendor_address,
+      String employee_id,
+      String description,
+      File vendor_image) async {
     try {
       Response response;
       var dio = Dio();
@@ -1096,9 +1217,15 @@ class APIHelper {
         'vendor_phone': vendor_phone,
         'vendor_address': vendor_address,
         'description': description,
-        'vendor_image': vendor_image != null ? await MultipartFile.fromFile(vendor_image.path.toString()) : null,
+        'employee_id': employee_id,
+        'vendor_image': vendor_image != null
+            ? await MultipartFile.fromFile(vendor_image.path.toString())
+            : null,
       });
-      
+
+      /*   print("vendornnnnn" + employee_id +"  formData  :  "+  "formData"  );*/
+      print("vendornnnnn" + description + "  formData  :  " + "formData");
+
       response = await dio.post('${global.baseUrl}partner_register',
           data: formData,
           options: Options(
@@ -1111,7 +1238,10 @@ class APIHelper {
       } else {
         recordList = null;
       }
-      
+
+
+
+
       return getAPIResultDio(response, recordList);
     } catch (e) {
       print("Exception - signUp(): " + e.toString());
@@ -1139,9 +1269,11 @@ class APIHelper {
         'vendor_loc': vendorLoc,
         'description': description,
         'vendor_email': vendorEmail,
-        'vendor_logo': image != null ? await MultipartFile.fromFile(image.path.toString()) : null,
+        'vendor_logo': image != null
+            ? await MultipartFile.fromFile(image.path.toString())
+            : null,
       });
-      
+
       response = await dio.post('${global.baseUrl}update_profile',
           data: formData,
           options: Options(
@@ -1154,7 +1286,7 @@ class APIHelper {
       } else {
         recordList = null;
       }
-      
+
       return getAPIResultDio(response, recordList);
     } catch (e) {
       print("Exception - updateProfile(): " + e.toString());

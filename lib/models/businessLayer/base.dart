@@ -165,7 +165,7 @@ class BaseState extends State<Base> with TickerProviderStateMixin, WidgetsBindin
                       style: TextStyle(color: Colors.red),
                     ),
                     onPressed: () {
-                      
+
                       return Navigator.of(context).pop(false);
                     },
                   ),

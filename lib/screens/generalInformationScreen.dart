@@ -26,7 +26,9 @@ class _GeneralInformationScreenState extends BaseRouteState {
   TextEditingController _cPhoneNumber = new TextEditingController();
   TextEditingController _cAddress = new TextEditingController();
   TextEditingController _cDescription = new TextEditingController();
+  TextEditingController _cemployeeID = new TextEditingController();
   File _tImage;
+  var _employeeID=new FocusNode();
   var _fOwnerName = new FocusNode();
   var _fPhoneNumber = new FocusNode();
   var _fAddress = new FocusNode();
@@ -263,6 +265,24 @@ class _GeneralInformationScreenState extends BaseRouteState {
                                         ),
                                       ),
                                     ),
+                                    Text(
+                                      AppLocalizations.of(context).lbl_employee_id,
+                                      style: Theme.of(context).primaryTextTheme.subtitle2,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: TextFormField(
+                                        textCapitalization: TextCapitalization.words,
+                                        onEditingComplete: () {
+                                          FocusScope.of(context).requestFocus(_fAddress);
+                                        },
+                                        controller: _cemployeeID,
+                                        decoration: InputDecoration(
+                                          hintText: AppLocalizations.of(context).hnt_employ_id,
+                                          contentPadding: EdgeInsets.only(top: 5, left: 10),
+                                        ),
+                                      ),
+                                    ),
                                     Container(
                                       margin: EdgeInsets.only(top: 10),
                                       child: Text(
@@ -363,6 +383,7 @@ class _GeneralInformationScreenState extends BaseRouteState {
       user.vendor_phone = _cPhoneNumber.text.trim();
       user.description = _cDescription.text.trim();
       user.owner_name = _cOwnerName.text.trim();
+      user.employee_id=_cemployeeID.text.trim();
 
       if (_saloonType != null) {
         user.type = _saloonType;
@@ -370,11 +391,17 @@ class _GeneralInformationScreenState extends BaseRouteState {
       user.vendor_image = _tImage;
 
       user.device_id = global.appDeviceId;
-      if (_cVenderName.text.isNotEmpty && _cPhoneNumber.text.isNotEmpty && _cPhoneNumber.text.length == 10 && _cOwnerName.text.isNotEmpty && _cAddress.text.isNotEmpty && _cDescription.text.isNotEmpty && _tImage != null) {
+      if (_cVenderName.text.isNotEmpty && _cPhoneNumber.text.isNotEmpty && _cPhoneNumber.text.length == 10 && _cOwnerName.text.isNotEmpty && _cAddress.text.isNotEmpty && _cDescription.text.isNotEmpty && _cemployeeID.text.isNotEmpty  && _tImage != null) {
         bool isConnected = await br.checkConnectivity();
         if (isConnected) {
+
+
           showOnlyLoaderDialog();
-          await apiHelper.signUp(user.type, user.vendor_name, user.owner_name, user.vendor_email, user.vendor_password, user.device_id, user.vendor_phone, user.vendor_address, user.description, _tImage).then((result) {
+
+
+           await apiHelper.signUp(user.type, user.vendor_name, user.owner_name, user.vendor_email,
+               user.vendor_password, user.device_id, user.vendor_phone, user.vendor_address,  user.employee_id, user.description, _tImage).then((result) {
+
             if (result.status == "1") {
               user = result.recordList;
               global.user = result.recordList;
@@ -408,7 +435,10 @@ class _GeneralInformationScreenState extends BaseRouteState {
         showSnackBar(key: _scaffoldKey, snackBarMessage: AppLocalizations.of(context).txt_please_enter_address);
       } else if (_cDescription.text.isEmpty) {
         showSnackBar(key: _scaffoldKey, snackBarMessage: AppLocalizations.of(context).txt_please_enter_description);
-      } else if (_tImage == null) {
+      }else if (_cemployeeID.text.isEmpty) {
+        showSnackBar(key: _scaffoldKey, snackBarMessage: AppLocalizations.of(context).txt_please_enter_employeID);
+      }
+      else if (_tImage == null) {
         showSnackBar(key: _scaffoldKey, snackBarMessage: AppLocalizations.of(context).txt_please_select_image);
       }
     } catch (e) {
@@ -420,6 +450,7 @@ class _GeneralInformationScreenState extends BaseRouteState {
     try {
       showCupertinoModalPopup(
         context: context,
+
         builder: (BuildContext context) => CupertinoActionSheet(
           title: Text(
             AppLocalizations.of(context).lbl_action,

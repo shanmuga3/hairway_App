@@ -50,6 +50,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get lbl_confirm_password => 'Confirm Password';
 
   @override
+  String get lbl_employee_id => 'Employee ID';
+
+  @override
   String get txt_i_accept_the => 'I accept the ';
 
   @override
@@ -81,6 +84,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get lbl_parlour_name => 'Parlour Name';
+
+  @override
+  String get hnt_employ_id => 'Enter Employee ID';
 
   @override
   String get hnt_parlour_name => 'Beauty Life Parlour';
@@ -153,6 +159,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get txt_please_enter_address => 'Please enter Address';
+
+  @override
+  String get txt_please_enter_employeID => 'Please enter Employee ID';
 
   @override
   String get txt_please_enter_description => 'Please enter Description';

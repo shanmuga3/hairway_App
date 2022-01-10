@@ -38,8 +38,9 @@ class _DrawerWidgetState extends BaseRouteState {
               child: ListTile(
                 leading: CircleAvatar(
                   radius: 25,
-                  child: global.user.vendor_logo == ""
-                      ? CircleAvatar(
+                  child:
+                  global.user.vendor_logo == "" ?
+                  CircleAvatar(
                           radius: 25,
                           backgroundImage: AssetImage(
                             'assets/userImage.png',
@@ -83,7 +84,7 @@ class _DrawerWidgetState extends BaseRouteState {
                         builder: (context) => MyWalletScreen(
                               a: widget.analytics,
                               o: widget.observer,
-                            )),
+                            ),),
                   );
                 },
               ),
@@ -133,7 +134,8 @@ class _DrawerWidgetState extends BaseRouteState {
                   );
                 },
               ),
-            ), Padding(
+            ),
+            Padding(
               padding: const EdgeInsets.only(),
               child: ListTile(
                 leading: Icon(

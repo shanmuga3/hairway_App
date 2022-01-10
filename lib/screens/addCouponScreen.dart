@@ -387,9 +387,9 @@ class _AddCouponScreenState extends BaseRouteState {
                   showDialog(
                       context: context,
                       builder: (BuildContext context) => SaveCouponDialog(
-                            a: widget.analytics,
-                            o: widget.observer,
-                          ));
+                        a: widget.analytics,
+                        o: widget.observer,
+                      ));
                 } else {
                   hideLoader();
                   showSnackBar(key: _scaffoldKey, snackBarMessage: '${result.message}');

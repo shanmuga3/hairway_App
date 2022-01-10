@@ -24,39 +24,31 @@ class _BottomNavigationWidgetState extends BaseRouteState {
       onWillPop: () {
         return exitAppDialog();
       },
-      child: sc(
+      child:
         Scaffold(
-            bottomNavigationBar: Container(
-              height: 61,
-              width: MediaQuery.of(context).size.width,
-              child: RollingNavBar.iconData(
-                iconSize: 25,
-                iconText: [
-                  Text(
-                    'Home',
-                    style: TextStyle(fontSize: 10),
-                  ),
-                  Text(
-                    'Orders',
-                    style: Theme.of(context).primaryTextTheme.bodyText2,
-                  ),
-                  Text(
-                    "Support",
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).primaryTextTheme.bodyText2,
-                  ),
-                  Text(
-                    'Profile',
-                    style: Theme.of(context).primaryTextTheme.bodyText2,
-                  )
-                ],
-                iconData: [Icons.home, Icons.lock, Icons.menu_book, Icons.person],
-                animationCurve: Curves.easeOut,
-                baseAnimationSpeed: 300,
-                animationType: AnimationType.roll,
-                indicatorColors: <Color>[Theme.of(context).primaryColor],
-                onTap: _onItemTap,
-              ),
+            bottomNavigationBar:  BottomNavigationBar(
+
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.message),
+                  label: 'Orders',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.book),
+                  label: 'Support',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person),
+                  label: 'Profile',
+                ),
+              ],unselectedItemColor: Colors.black,
+              currentIndex: _selectedIndex,
+              selectedItemColor: Colors.amber[800],
+              onTap: _onItemTap,
             ),
             drawer: _selectedIndex == 0
                 ? DrawerWidget(
@@ -65,8 +57,8 @@ class _BottomNavigationWidgetState extends BaseRouteState {
                   )
                 : null,
             body: _children().elementAt(_selectedIndex)),
-      ),
-    );
+      );
+
   }
 
   @override

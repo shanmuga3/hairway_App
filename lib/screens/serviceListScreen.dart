@@ -31,6 +31,7 @@ class _ServiceListScreenState extends BaseRouteState {
 
   @override
   Widget build(BuildContext context) {
+    String dropdownValue = 'One';
     return sc(
       WillPopScope(
         onWillPop: () {
@@ -371,6 +372,8 @@ class _ServiceListScreenState extends BaseRouteState {
                                             .txt_service_will_shown_here)),
                                   )
                             : Expanded(child: _shimmer())
+
+                        /* DropDown()*/
                       ],
                     ),
                   ))
@@ -385,10 +388,11 @@ class _ServiceListScreenState extends BaseRouteState {
                   child: TextButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AddServiceVariantScreen(screenId)));
+                          builder: (context) =>
+                              AddServiceVariantScreen(screenId)));
                     },
-                    child:
-                        Text(AppLocalizations.of(context).lbl_add_service_variant),
+                    child: Text(
+                        AppLocalizations.of(context).lbl_add_service_variant),
                   ),
                   decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor,
@@ -721,4 +725,42 @@ class _ServiceListScreenState extends BaseRouteState {
           )),
     );
   }
+}
+
+class DropDown extends StatefulWidget {
+  @override
+  _DropDownState createState() => _DropDownState();
+}
+
+class _DropDownState extends State<DropDown> {
+  final items = ['a', 'b', 'c', 'd', 'e', 'f'];
+
+  String value;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 200,
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.black, width: 2),
+          borderRadius: BorderRadius.circular(12)),
+      child: DropdownButton(
+          value: value,
+          isExpanded: true,
+          icon: Icon(
+            Icons.arrow_drop_down,
+            color: Colors.black,
+          ),
+          items: items.map(buildMenuItem).toList(),
+          onChanged: (value) => setState(() => this.value = value)),
+    );
+  }
+
+  DropdownMenuItem buildMenuItem(String item) => DropdownMenuItem(
+        value: item,
+        child: Text(
+          item,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        ),
+      );
 }

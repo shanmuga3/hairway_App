@@ -27,7 +27,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     await Firebase.initializeApp();
     print('Handling a background message ${message.messageId}');
   } catch (e) {
-    print('Exception - main.dart - _firebaseMessagingBackgroundHandler(): ' + e.toString());
+    print('Exception - main.dart - _firebaseMessagingBackgroundHandler(): ' +
+        e.toString());
   }
 }
 
@@ -38,7 +39,10 @@ void main() async {
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-  await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(channel);
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
   runApp(MyApp());
 }
 
@@ -50,13 +54,15 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   static FirebaseAnalytics analytics = FirebaseAnalytics();
-  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
   final String routeName = "main";
 
   @override
   void initState() {
     super.initState();
-    var initialzationSettingsAndroid = AndroidInitializationSettings('@mipmap/notificationdemo');
+    var initialzationSettingsAndroid =
+        AndroidInitializationSettings('@mipmap/notificationdemo');
     var initializationSettingsIOS = IOSInitializationSettings();
     var initializationSettings = InitializationSettings(
       android: initialzationSettingsAndroid,
@@ -70,8 +76,10 @@ class MyAppState extends State<MyApp> {
         print('Message data: ${message.data}');
 
         if (message.notification != null) {
-          Future<String> _downloadAndSaveFile(String url, String fileName) async {
-            final Directory directory = await getApplicationDocumentsDirectory();
+          Future<String> _downloadAndSaveFile(
+              String url, String fileName) async {
+            final Directory directory =
+                await getApplicationDocumentsDirectory();
             final String filePath = '${directory.path}/$fileName';
             final http.Response response = await http.get(Uri.parse(url));
             final File file = File(filePath);
@@ -80,30 +88,63 @@ class MyAppState extends State<MyApp> {
           }
 
           if (Platform.isAndroid) {
-            final String bigPicturePath = await _downloadAndSaveFile(message.notification.android.imageUrl != null ? message.notification.android.imageUrl : 'https://picsum.photos/200/300', 'bigPicture');
+            final String bigPicturePath = await _downloadAndSaveFile(
+                message.notification.android.imageUrl != null
+                    ? message.notification.android.imageUrl
+                    : 'https://picsum.photos/200/300',
+                'bigPicture');
 
-            final BigPictureStyleInformation bigPictureStyleInformation = BigPictureStyleInformation(
+            final BigPictureStyleInformation bigPictureStyleInformation =
+                BigPictureStyleInformation(
               FilePathAndroidBitmap(bigPicturePath),
             );
-            final AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(channel.id, channel.name, channel.description, icon: '@mipmap/notificationdemo', styleInformation: bigPictureStyleInformation);
-            final AndroidNotificationDetails androidPlatformChannelSpecifics2 = AndroidNotificationDetails(channel.id, channel.name, channel.description, icon: '@mipmap/notificationdemo', styleInformation: BigTextStyleInformation(message.notification.body)
-                );
-            final NotificationDetails platformChannelSpecifics = NotificationDetails(android: message.notification.android.imageUrl != null ? androidPlatformChannelSpecifics : androidPlatformChannelSpecifics2);
+            final AndroidNotificationDetails androidPlatformChannelSpecifics =
+                AndroidNotificationDetails(
+                    channel.id, channel.name, channel.description,
+                    icon: '@mipmap/notificationdemo',
+                    styleInformation: bigPictureStyleInformation);
+            final AndroidNotificationDetails androidPlatformChannelSpecifics2 =
+                AndroidNotificationDetails(
+                    channel.id, channel.name, channel.description,
+                    icon: '@mipmap/notificationdemo',
+                    styleInformation:
+                        BigTextStyleInformation(message.notification.body));
+            final NotificationDetails platformChannelSpecifics =
+                NotificationDetails(
+                    android: message.notification.android.imageUrl != null
+                        ? androidPlatformChannelSpecifics
+                        : androidPlatformChannelSpecifics2);
 
-            flutterLocalNotificationsPlugin.show(5, message.notification.title, message.notification.body, platformChannelSpecifics);
+            flutterLocalNotificationsPlugin.show(5, message.notification.title,
+                message.notification.body, platformChannelSpecifics);
           } else if (Platform.isIOS) {
-            final String bigPicturePath = await _downloadAndSaveFile(message.notification.apple.imageUrl != null ? message.notification.apple.imageUrl : 'https://picsum.photos/200/300', 'bigPicture.jpg');
-            final IOSNotificationDetails iOSPlatformChannelSpecifics = IOSNotificationDetails(attachments: <IOSNotificationAttachment>[IOSNotificationAttachment(bigPicturePath)]);
-            final IOSNotificationDetails iOSPlatformChannelSpecifics2 = IOSNotificationDetails(badgeNumber: 1);
+            final String bigPicturePath = await _downloadAndSaveFile(
+                message.notification.apple.imageUrl != null
+                    ? message.notification.apple.imageUrl
+                    : 'https://picsum.photos/200/300',
+                'bigPicture.jpg');
+            final IOSNotificationDetails iOSPlatformChannelSpecifics =
+                IOSNotificationDetails(attachments: <IOSNotificationAttachment>[
+              IOSNotificationAttachment(bigPicturePath)
+            ]);
+            final IOSNotificationDetails iOSPlatformChannelSpecifics2 =
+                IOSNotificationDetails(badgeNumber: 1);
             final NotificationDetails notificationDetails = NotificationDetails(
-              iOS: message.notification.apple.imageUrl != null ? iOSPlatformChannelSpecifics : iOSPlatformChannelSpecifics2,
+              iOS: message.notification.apple.imageUrl != null
+                  ? iOSPlatformChannelSpecifics
+                  : iOSPlatformChannelSpecifics2,
             );
-            await flutterLocalNotificationsPlugin.show(1, message.notification.title, message.notification.body, notificationDetails);
+            await flutterLocalNotificationsPlugin.show(
+                1,
+                message.notification.title,
+                message.notification.body,
+                notificationDetails);
           }
         }
 
         if (message.notification != null) {
-          print('Message also contained a notification: ${message.notification}');
+          print(
+              'Message also contained a notification: ${message.notification}');
         }
       } catch (e) {
         print('Exception - main.dart - onMessage.listen(): ' + e.toString());

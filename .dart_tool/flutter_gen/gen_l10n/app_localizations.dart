@@ -180,6 +180,12 @@ abstract class AppLocalizations {
   /// **'Confirm Password'**
   String get lbl_confirm_password;
 
+  /// Employee_ID
+  ///
+  /// In en, this message translates to:
+  /// **'Employee ID'**
+  String get lbl_employee_id;
+
   /// I accept the
   ///
   /// In en, this message translates to:
@@ -245,6 +251,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Parlour Name'**
   String get lbl_parlour_name;
+
+  /// Enter Employee ID
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Employee ID'**
+  String get hnt_employ_id;
 
   /// Beauty Life Parlour
   ///
@@ -389,6 +401,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please enter Address'**
   String get txt_please_enter_address;
+
+  /// Please enter Employee ID
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter Employee ID'**
+  String get txt_please_enter_employeID;
 
   /// Please enter description
   ///

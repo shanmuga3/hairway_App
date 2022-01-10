@@ -385,12 +385,14 @@ com/google/android/exoplayer2/video/VideoListener.class
 com/google/android/exoplayer2/video/VideoRendererEventListener.class
 com/google/android/exoplayer2/video/spherical/Projection$DrawMode.class
 com/google/android/gms/cloudmessaging/CloudMessage$MessagePriority.class
-com/google/android/gms/common/GoogleSignatureVerifier.class
 com/google/android/gms/common/annotation/KeepForSdk.class
 com/google/android/gms/common/annotation/KeepForSdkWithFieldsAndMethods.class
 com/google/android/gms/common/annotation/KeepForSdkWithMembers.class
 com/google/android/gms/common/annotation/KeepName.class
+com/google/android/gms/common/annotation/NonNullApi.class
+com/google/android/gms/common/internal/Asserts.class
 com/google/android/gms/common/internal/HideFirstParty.class
+com/google/android/gms/common/internal/Preconditions.class
 com/google/android/gms/common/internal/ShowFirstParty.class
 com/google/android/gms/common/internal/safeparcel/SafeParcelable$Class.class
 com/google/android/gms/common/internal/safeparcel/SafeParcelable$Constructor.class
@@ -401,9 +403,8 @@ com/google/android/gms/common/internal/safeparcel/SafeParcelable$Reserved.class
 com/google/android/gms/common/internal/safeparcel/SafeParcelable$VersionField.class
 com/google/android/gms/common/util/DynamiteApi.class
 com/google/android/gms/common/util/RetainForClient.class
+com/google/android/gms/common/util/Strings.class
 com/google/android/gms/common/util/VisibleForTesting.class
-com/google/android/gms/common/zzc.class
-com/google/android/gms/common/zzm.class
 com/google/android/gms/internal/firebase_messaging/zzn.class
 com/google/android/gms/internal/firebase_messaging/zzr.class
 com/google/android/gms/internal/firebase_messaging/zzs.class

@@ -13,9 +13,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AddServiceScreen extends BaseRoute {
   final Service service;
 
-  AddServiceScreen({a, o, this.service}) : super(a: a, o: o, r: 'AddServiceScreen');
+  AddServiceScreen({a, o, this.service})
+      : super(a: a, o: o, r: 'AddServiceScreen');
   @override
-  _AddServiceScreenState createState() => new _AddServiceScreenState(this.service);
+  _AddServiceScreenState createState() =>
+      new _AddServiceScreenState(this.service);
 }
 
 class _AddServiceScreenState extends BaseRouteState {
@@ -50,7 +52,9 @@ class _AddServiceScreenState extends BaseRouteState {
                   AppLocalizations.of(context).btn_save_service,
                 ),
               ),
-              decoration: BoxDecoration(color: Theme.of(context).primaryColor, borderRadius: BorderRadius.all(Radius.circular(10))),
+              decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
             ),
             resizeToAvoidBottomInset: false,
             body: Container(
@@ -77,7 +81,9 @@ class _AddServiceScreenState extends BaseRouteState {
                           ),
                         ),
                         Padding(
-                          padding: Platform.isAndroid ? EdgeInsets.only(bottom: 15, left: 10, top: 10) : EdgeInsets.only(bottom: 15, left: 10, top: 20),
+                          padding: Platform.isAndroid
+                              ? EdgeInsets.only(bottom: 15, left: 10, top: 10)
+                              : EdgeInsets.only(bottom: 15, left: 10, top: 20),
                           child: GestureDetector(
                             onTap: () {
                               Navigator.of(context).pop();
@@ -90,7 +96,8 @@ class _AddServiceScreenState extends BaseRouteState {
                                 ),
                                 Text(
                                   AppLocalizations.of(context).lbl_back,
-                                  style: TextStyle(color: Colors.black, fontSize: 17.5),
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 17.5),
                                 ),
                               ],
                             ),
@@ -102,7 +109,9 @@ class _AddServiceScreenState extends BaseRouteState {
                   Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20)),
                       ),
                       margin: EdgeInsets.only(top: 80),
                       child: Padding(
@@ -113,8 +122,14 @@ class _AddServiceScreenState extends BaseRouteState {
                             Container(
                                 margin: EdgeInsets.only(top: 30, bottom: 10),
                                 child: Text(
-                                  service != null ? AppLocalizations.of(context).lbl_edit_service : AppLocalizations.of(context).lbl_Add_service,
-                                  style: Theme.of(context).primaryTextTheme.headline3,
+                                  service != null
+                                      ? AppLocalizations.of(context)
+                                          .lbl_edit_service
+                                      : AppLocalizations.of(context)
+                                          .lbl_Add_service,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .headline3,
                                 )),
                             Expanded(
                               child: SingleChildScrollView(
@@ -122,47 +137,67 @@ class _AddServiceScreenState extends BaseRouteState {
                                 child: Padding(
                                   padding: EdgeInsets.only(
                                     top: 15,
-                                    bottom: MediaQuery.of(context).viewInsets.bottom,
+                                    bottom: MediaQuery.of(context)
+                                        .viewInsets
+                                        .bottom,
                                   ),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         margin: EdgeInsets.only(top: 10),
                                         child: Text(
-                                          AppLocalizations.of(context).lbl_service_name,
-                                          style: Theme.of(context).primaryTextTheme.subtitle2,
+                                          AppLocalizations.of(context)
+                                              .lbl_service_name,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.only(top: 5),
                                         child: TextFormField(
-                                          textCapitalization: TextCapitalization.words,
+                                          textCapitalization:
+                                              TextCapitalization.words,
                                           controller: _cServiceName,
                                           decoration: InputDecoration(
-                                            hintText: AppLocalizations.of(context).hnt_service_name,
-                                            contentPadding: EdgeInsets.only(top: 5, left: 10, right: 10),
+                                            hintText:
+                                                AppLocalizations.of(context)
+                                                    .hnt_service_name,
+                                            contentPadding: EdgeInsets.only(
+                                                top: 5, left: 10, right: 10),
                                           ),
                                         ),
                                       ),
                                       Container(
                                         margin: EdgeInsets.only(top: 10),
                                         child: Text(
-                                          AppLocalizations.of(context).lbl_upload_image,
-                                          style: Theme.of(context).primaryTextTheme.subtitle2,
+                                          AppLocalizations.of(context)
+                                              .lbl_upload_image,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                       Container(
                                         decoration: BoxDecoration(
-                                          border: Border.all(width: 2, color: Theme.of(context).inputDecorationTheme.enabledBorder.borderSide.color),
+                                          border: Border.all(
+                                              width: 2,
+                                              color: Theme.of(context)
+                                                  .inputDecorationTheme
+                                                  .enabledBorder
+                                                  .borderSide
+                                                  .color),
                                           borderRadius: BorderRadius.all(
                                             Radius.circular(10),
                                           ),
                                         ),
                                         margin: EdgeInsets.only(top: 5),
                                         height: 300,
-                                        width: MediaQuery.of(context).size.width,
+                                        width:
+                                            MediaQuery.of(context).size.width,
                                         child: _tImage == null
                                             ? service == null
                                                 ? GestureDetector(
@@ -172,14 +207,22 @@ class _AddServiceScreenState extends BaseRouteState {
                                                     },
                                                     child: Center(
                                                         child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
                                                       children: [
                                                         Icon(
                                                           Icons.image,
                                                           size: 55,
-                                                          color: Theme.of(context).primaryTextTheme.headline1.color,
+                                                          color: Theme.of(
+                                                                  context)
+                                                              .primaryTextTheme
+                                                              .headline1
+                                                              .color,
                                                         ),
-                                                        Text(AppLocalizations.of(context).lbl_tap_to_add_image)
+                                                        Text(AppLocalizations
+                                                                .of(context)
+                                                            .lbl_tap_to_add_image)
                                                       ],
                                                     )),
                                                   )
@@ -188,15 +231,34 @@ class _AddServiceScreenState extends BaseRouteState {
                                                       _showCupertinoModalSheet();
                                                     },
                                                     child: ClipRRect(
-                                                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10)),
                                                       child: CachedNetworkImage(
-                                                        imageUrl: global.baseUrlForImage + service.service_image,
-                                                        imageBuilder: (context, imageProvider) => Container(
+                                                        imageUrl: global
+                                                                .baseUrlForImage +
+                                                            service
+                                                                .service_image,
+                                                        imageBuilder: (context,
+                                                                imageProvider) =>
+                                                            Container(
                                                           height: 90,
-                                                          decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.contain, image: imageProvider)),
+                                                          decoration: BoxDecoration(
+                                                              image: DecorationImage(
+                                                                  fit: BoxFit
+                                                                      .contain,
+                                                                  image:
+                                                                      imageProvider)),
                                                         ),
-                                                        placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-                                                        errorWidget: (context, url, error) => Icon(Icons.error),
+                                                        placeholder: (context,
+                                                                url) =>
+                                                            Center(
+                                                                child:
+                                                                    CircularProgressIndicator()),
+                                                        errorWidget: (context,
+                                                                url, error) =>
+                                                            Icon(Icons.error),
                                                       ),
                                                     ),
                                                   )
@@ -205,9 +267,16 @@ class _AddServiceScreenState extends BaseRouteState {
                                                   _showCupertinoModalSheet();
                                                 },
                                                 child: ClipRRect(
-                                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
                                                   child: Container(
-                                                    decoration: BoxDecoration(image: DecorationImage(image: FileImage(_tImage), fit: BoxFit.contain)),
+                                                    decoration: BoxDecoration(
+                                                        image: DecorationImage(
+                                                            image: FileImage(
+                                                                _tImage),
+                                                            fit: BoxFit
+                                                                .contain)),
                                                   ),
                                                 ),
                                               ),
@@ -249,7 +318,10 @@ class _AddServiceScreenState extends BaseRouteState {
           showOnlyLoaderDialog();
           if (_service.service_id == null) {
             if (_tImage != null) {
-              await apiHelper.addService(_service.vendor_id, _service.service_name, _tImage).then((result) {
+              await apiHelper
+                  .addService(
+                      _service.vendor_id, _service.service_name, _tImage)
+                  .then((result) {
                 if (result.status == "1") {
                   hideLoader();
                   showDialog(
@@ -260,16 +332,23 @@ class _AddServiceScreenState extends BaseRouteState {
                           ));
                 } else {
                   hideLoader();
-                  showSnackBar(key: _scaffoldKey, snackBarMessage: '${result.message}');
+                  showSnackBar(
+                      key: _scaffoldKey, snackBarMessage: '${result.message}');
                 }
               });
             } else {
               hideLoader();
-              showSnackBar(key: _scaffoldKey, snackBarMessage: AppLocalizations.of(context).txt_please_select_image);
+              showSnackBar(
+                  key: _scaffoldKey,
+                  snackBarMessage:
+                      AppLocalizations.of(context).txt_please_select_image);
             }
           } else //update
           {
-            await apiHelper.editService(_service.vendor_id, _service.service_name, _tImage, _service.service_id).then((result) {
+            await apiHelper
+                .editService(_service.vendor_id, _service.service_name, _tImage,
+                    _service.service_id)
+                .then((result) {
               if (result.status == "1") {
                 hideLoader();
                 showDialog(
@@ -280,7 +359,8 @@ class _AddServiceScreenState extends BaseRouteState {
                         ));
               } else {
                 hideLoader();
-                showSnackBar(key: _scaffoldKey, snackBarMessage: '${result.message}');
+                showSnackBar(
+                    key: _scaffoldKey, snackBarMessage: '${result.message}');
               }
             });
           }
@@ -288,10 +368,14 @@ class _AddServiceScreenState extends BaseRouteState {
           showNetworkErrorSnackBar(_scaffoldKey);
         }
       } else if (_cServiceName.text.isEmpty) {
-        showSnackBar(key: _scaffoldKey, snackBarMessage: AppLocalizations.of(context).txt_please_enter_name);
+        showSnackBar(
+            key: _scaffoldKey,
+            snackBarMessage:
+                AppLocalizations.of(context).txt_please_enter_name);
       }
     } catch (e) {
-      print("Exception - addServicesScreen.dart - _addService():" + e.toString());
+      print(
+          "Exception - addServicesScreen.dart - _addService():" + e.toString());
     }
   }
 
@@ -317,31 +401,33 @@ class _AddServiceScreenState extends BaseRouteState {
           title: Text(AppLocalizations.of(context).lbl_action),
           actions: [
             CupertinoActionSheetAction(
-              child: Text(AppLocalizations.of(context).lbl_take_picture, style: TextStyle(color: Color(0xFF171D2C))),
+              child: Text(AppLocalizations.of(context).lbl_take_picture,
+                  style: TextStyle(color: Color(0xFF171D2C))),
               onPressed: () async {
                 Navigator.pop(context);
                 showOnlyLoaderDialog();
                 _tImage = await br.openCamera();
                 hideLoader();
 
-                
                 setState(() {});
               },
             ),
             CupertinoActionSheetAction(
-              child: Text(AppLocalizations.of(context).lbl_choose_from_library, style: TextStyle(color: Color(0xFF171D2C))),
+              child: Text(AppLocalizations.of(context).lbl_choose_from_library,
+                  style: TextStyle(color: Color(0xFF171D2C))),
               onPressed: () async {
                 Navigator.pop(context);
                 showOnlyLoaderDialog();
                 _tImage = await br.selectImageFromGallery();
                 hideLoader();
-                
+
                 setState(() {});
               },
             )
           ],
           cancelButton: CupertinoActionSheetAction(
-            child: Text(AppLocalizations.of(context).lbl_cancel, style: TextStyle(color: Color(0xFFFA692C))),
+            child: Text(AppLocalizations.of(context).lbl_cancel,
+                style: TextStyle(color: Color(0xFFFA692C))),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -349,7 +435,8 @@ class _AddServiceScreenState extends BaseRouteState {
         ),
       );
     } catch (e) {
-      print("Exception - addServicesScreen.dart - _showCupertinoModalSheet():" + e.toString());
+      print("Exception - addServicesScreen.dart - _showCupertinoModalSheet():" +
+          e.toString());
     }
   }
 }

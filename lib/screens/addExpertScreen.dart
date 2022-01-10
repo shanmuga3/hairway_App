@@ -12,9 +12,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddExpertScreen extends BaseRoute {
   final Expert experts;
-  AddExpertScreen({a, o, this.experts}) : super(a: a, o: o, r: 'AddExpertScreen');
+  AddExpertScreen({a, o, this.experts})
+      : super(a: a, o: o, r: 'AddExpertScreen');
   @override
-  _AddExpertScreenState createState() => new _AddExpertScreenState(this.experts);
+  _AddExpertScreenState createState() =>
+      new _AddExpertScreenState(this.experts);
 }
 
 class _AddExpertScreenState extends BaseRouteState {
@@ -53,7 +55,9 @@ class _AddExpertScreenState extends BaseRouteState {
                   AppLocalizations.of(context).btn_save_expert,
                 ),
               ),
-              decoration: BoxDecoration(color: Theme.of(context).primaryColor, borderRadius: BorderRadius.all(Radius.circular(10))),
+              decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
             ),
             resizeToAvoidBottomInset: false,
             body: Container(
@@ -80,7 +84,9 @@ class _AddExpertScreenState extends BaseRouteState {
                           ),
                         ),
                         Padding(
-                          padding: Platform.isAndroid ? EdgeInsets.only(bottom: 15, left: 10, top: 10) : EdgeInsets.only(bottom: 15, left: 10, top: 20),
+                          padding: Platform.isAndroid
+                              ? EdgeInsets.only(bottom: 15, left: 10, top: 10)
+                              : EdgeInsets.only(bottom: 15, left: 10, top: 20),
                           child: GestureDetector(
                             onTap: () {
                               Navigator.of(context).pop();
@@ -93,7 +99,8 @@ class _AddExpertScreenState extends BaseRouteState {
                                 ),
                                 Text(
                                   AppLocalizations.of(context).lbl_back,
-                                  style: TextStyle(color: Colors.black, fontSize: 17.5),
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 17.5),
                                 ),
                               ],
                             ),
@@ -105,7 +112,9 @@ class _AddExpertScreenState extends BaseRouteState {
                   Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20)),
                       ),
                       margin: EdgeInsets.only(top: 80),
                       child: Padding(
@@ -116,8 +125,14 @@ class _AddExpertScreenState extends BaseRouteState {
                             Container(
                                 margin: EdgeInsets.only(top: 30, bottom: 10),
                                 child: Text(
-                                  experts != null ? AppLocalizations.of(context).lbl_edit_expert : AppLocalizations.of(context).lbl_add_Expert,
-                                  style: Theme.of(context).primaryTextTheme.headline3,
+                                  experts != null
+                                      ? AppLocalizations.of(context)
+                                          .lbl_edit_expert
+                                      : AppLocalizations.of(context)
+                                          .lbl_add_Expert,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .headline3,
                                 )),
                             Expanded(
                               child: SingleChildScrollView(
@@ -125,68 +140,96 @@ class _AddExpertScreenState extends BaseRouteState {
                                 child: Padding(
                                   padding: EdgeInsets.only(
                                     top: 15,
-                                    bottom: MediaQuery.of(context).viewInsets.bottom,
+                                    bottom: MediaQuery.of(context)
+                                        .viewInsets
+                                        .bottom,
                                   ),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        AppLocalizations.of(context).lbl_expert_name,
-                                        style: Theme.of(context).primaryTextTheme.subtitle2,
+                                        AppLocalizations.of(context)
+                                            .lbl_expert_name,
+                                        style: Theme.of(context)
+                                            .primaryTextTheme
+                                            .subtitle2,
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.only(top: 5),
                                         child: TextFormField(
-                                          textCapitalization: TextCapitalization.words,
+                                          textCapitalization:
+                                              TextCapitalization.words,
                                           controller: _cStaffName,
                                           focusNode: _fEmail,
                                           onFieldSubmitted: (val) {
-                                            FocusScope.of(context).requestFocus(_fPassword);
+                                            FocusScope.of(context)
+                                                .requestFocus(_fPassword);
                                           },
                                           decoration: InputDecoration(
-                                            hintText: AppLocalizations.of(context).hnt_expert_name,
-                                            contentPadding: EdgeInsets.only(top: 5, left: 10, right: 10),
+                                            hintText:
+                                                AppLocalizations.of(context)
+                                                    .hnt_expert_name,
+                                            contentPadding: EdgeInsets.only(
+                                                top: 5, left: 10, right: 10),
                                           ),
                                         ),
                                       ),
                                       Container(
                                         margin: EdgeInsets.only(top: 10),
                                         child: Text(
-                                          AppLocalizations.of(context).lbl_description,
-                                          style: Theme.of(context).primaryTextTheme.subtitle2,
+                                          AppLocalizations.of(context)
+                                              .lbl_description,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.only(top: 5),
                                         child: TextFormField(
-                                          textCapitalization: TextCapitalization.sentences,
+                                          textCapitalization:
+                                              TextCapitalization.sentences,
                                           controller: _cStaffDescription,
                                           maxLines: 5,
                                           obscureText: _showConfirmPassword,
                                           decoration: InputDecoration(
-                                            hintText: AppLocalizations.of(context).hnt_description,
-                                            contentPadding: EdgeInsets.only(top: 10, left: 10, right: 10),
+                                            hintText:
+                                                AppLocalizations.of(context)
+                                                    .hnt_description,
+                                            contentPadding: EdgeInsets.only(
+                                                top: 10, left: 10, right: 10),
                                           ),
                                         ),
                                       ),
                                       Container(
                                         margin: EdgeInsets.only(top: 10),
                                         child: Text(
-                                          AppLocalizations.of(context).lbl_upload_image,
-                                          style: Theme.of(context).primaryTextTheme.subtitle2,
+                                          AppLocalizations.of(context)
+                                              .lbl_upload_image,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                       Container(
                                         decoration: BoxDecoration(
-                                          border: Border.all(width: 2, color: Theme.of(context).inputDecorationTheme.enabledBorder.borderSide.color),
+                                          border: Border.all(
+                                              width: 2,
+                                              color: Theme.of(context)
+                                                  .inputDecorationTheme
+                                                  .enabledBorder
+                                                  .borderSide
+                                                  .color),
                                           borderRadius: BorderRadius.all(
                                             Radius.circular(10),
                                           ),
                                         ),
                                         margin: EdgeInsets.only(top: 5),
                                         height: 300,
-                                        width: MediaQuery.of(context).size.width,
+                                        width:
+                                            MediaQuery.of(context).size.width,
                                         child: _tImage == null
                                             ? experts == null
                                                 ? GestureDetector(
@@ -196,14 +239,22 @@ class _AddExpertScreenState extends BaseRouteState {
                                                     },
                                                     child: Center(
                                                         child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
                                                       children: [
                                                         Icon(
                                                           Icons.image,
                                                           size: 55,
-                                                          color: Theme.of(context).primaryTextTheme.headline1.color,
+                                                          color: Theme.of(
+                                                                  context)
+                                                              .primaryTextTheme
+                                                              .headline1
+                                                              .color,
                                                         ),
-                                                        Text(AppLocalizations.of(context).lbl_tap_to_add_image)
+                                                        Text(AppLocalizations
+                                                                .of(context)
+                                                            .lbl_tap_to_add_image)
                                                       ],
                                                     )),
                                                   )
@@ -212,15 +263,33 @@ class _AddExpertScreenState extends BaseRouteState {
                                                       _showCupertinoModalSheet();
                                                     },
                                                     child: ClipRRect(
-                                                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10)),
                                                       child: CachedNetworkImage(
-                                                        imageUrl: global.baseUrlForImage + experts.staff_image,
-                                                        imageBuilder: (context, imageProvider) => Container(
+                                                        imageUrl: global
+                                                                .baseUrlForImage +
+                                                            experts.staff_image,
+                                                        imageBuilder: (context,
+                                                                imageProvider) =>
+                                                            Container(
                                                           height: 90,
-                                                          decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.contain, image: imageProvider)),
+                                                          decoration: BoxDecoration(
+                                                              image: DecorationImage(
+                                                                  fit: BoxFit
+                                                                      .contain,
+                                                                  image:
+                                                                      imageProvider)),
                                                         ),
-                                                        placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-                                                        errorWidget: (context, url, error) => Icon(Icons.error),
+                                                        placeholder: (context,
+                                                                url) =>
+                                                            Center(
+                                                                child:
+                                                                    CircularProgressIndicator()),
+                                                        errorWidget: (context,
+                                                                url, error) =>
+                                                            Icon(Icons.error),
                                                       ),
                                                     ),
                                                   )
@@ -229,9 +298,16 @@ class _AddExpertScreenState extends BaseRouteState {
                                                   _showCupertinoModalSheet();
                                                 },
                                                 child: ClipRRect(
-                                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
                                                   child: Container(
-                                                    decoration: BoxDecoration(image: DecorationImage(image: FileImage(_tImage), fit: BoxFit.contain)),
+                                                    decoration: BoxDecoration(
+                                                        image: DecorationImage(
+                                                            image: FileImage(
+                                                                _tImage),
+                                                            fit: BoxFit
+                                                                .contain)),
                                                   ),
                                                 ),
                                               ),
@@ -289,7 +365,10 @@ class _AddExpertScreenState extends BaseRouteState {
 
           if (_experts.staff_id == null) {
             if (_tImage != null) {
-              await apiHelper.addExpert(_experts.vendor_id, _experts.staff_name, _experts.staff_description, _tImage).then((result) {
+              await apiHelper
+                  .addExpert(_experts.vendor_id, _experts.staff_name,
+                      _experts.staff_description, _tImage)
+                  .then((result) {
                 if (result.status == "1") {
                   hideLoader();
                   showDialog(
@@ -300,16 +379,23 @@ class _AddExpertScreenState extends BaseRouteState {
                           ));
                 } else {
                   hideLoader();
-                  showSnackBar(key: _scaffoldKey, snackBarMessage: '${result.message}');
+                  showSnackBar(
+                      key: _scaffoldKey, snackBarMessage: '${result.message}');
                 }
               });
             } else {
               hideLoader();
-              showSnackBar(key: _scaffoldKey, snackBarMessage: AppLocalizations.of(context).txt_please_select_image);
+              showSnackBar(
+                  key: _scaffoldKey,
+                  snackBarMessage:
+                      AppLocalizations.of(context).txt_please_select_image);
             }
           } else //update
           {
-            await apiHelper.editExpert(_experts.vendor_id, _experts.staff_name, _experts.staff_description, _tImage, _experts.staff_id).then((result) {
+            await apiHelper
+                .editExpert(_experts.vendor_id, _experts.staff_name,
+                    _experts.staff_description, _tImage, _experts.staff_id)
+                .then((result) {
               if (result.status == "1") {
                 hideLoader();
                 showDialog(
@@ -320,7 +406,8 @@ class _AddExpertScreenState extends BaseRouteState {
                         ));
               } else {
                 hideLoader();
-                showSnackBar(key: _scaffoldKey, snackBarMessage: '${result.message}');
+                showSnackBar(
+                    key: _scaffoldKey, snackBarMessage: '${result.message}');
               }
             });
           }
@@ -328,9 +415,15 @@ class _AddExpertScreenState extends BaseRouteState {
           showNetworkErrorSnackBar(_scaffoldKey);
         }
       } else if (_cStaffName.text.isEmpty) {
-        showSnackBar(key: _scaffoldKey, snackBarMessage: AppLocalizations.of(context).txt_please_enter_name);
+        showSnackBar(
+            key: _scaffoldKey,
+            snackBarMessage:
+                AppLocalizations.of(context).txt_please_enter_name);
       } else if (_cStaffDescription.text.isEmpty) {
-        showSnackBar(key: _scaffoldKey, snackBarMessage: AppLocalizations.of(context).txt_please_enter_description);
+        showSnackBar(
+            key: _scaffoldKey,
+            snackBarMessage:
+                AppLocalizations.of(context).txt_please_enter_description);
       }
     } catch (e) {
       print("Exception - addExpertScreen.dart - addExpert():" + e.toString());
@@ -347,7 +440,8 @@ class _AddExpertScreenState extends BaseRouteState {
           title: Text(AppLocalizations.of(context).lbl_action),
           actions: [
             CupertinoActionSheetAction(
-              child: Text(AppLocalizations.of(context).lbl_take_picture, style: TextStyle(color: Color(0xFF171D2C))),
+              child: Text(AppLocalizations.of(context).lbl_take_picture,
+                  style: TextStyle(color: Color(0xFF171D2C))),
               onPressed: () async {
                 Navigator.pop(context);
                 showOnlyLoaderDialog();
@@ -358,7 +452,8 @@ class _AddExpertScreenState extends BaseRouteState {
               },
             ),
             CupertinoActionSheetAction(
-              child: Text(AppLocalizations.of(context).lbl_choose_from_library, style: TextStyle(color: Color(0xFF171D2C))),
+              child: Text(AppLocalizations.of(context).lbl_choose_from_library,
+                  style: TextStyle(color: Color(0xFF171D2C))),
               onPressed: () async {
                 Navigator.pop(context);
                 showOnlyLoaderDialog();
@@ -369,7 +464,8 @@ class _AddExpertScreenState extends BaseRouteState {
             )
           ],
           cancelButton: CupertinoActionSheetAction(
-            child: Text(AppLocalizations.of(context).lbl_cancel, style: TextStyle(color: Color(0xFFFA692C))),
+            child: Text(AppLocalizations.of(context).lbl_cancel,
+                style: TextStyle(color: Color(0xFFFA692C))),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -377,7 +473,8 @@ class _AddExpertScreenState extends BaseRouteState {
         ),
       );
     } catch (e) {
-      print("Exception - addExpertScreen.dart - _showCupertinoModalSheet():" + e.toString());
+      print("Exception - addExpertScreen.dart - _showCupertinoModalSheet():" +
+          e.toString());
     }
   }
 }
